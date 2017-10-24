@@ -4,3 +4,8 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: home
 ---
+
+#### Mon titre en H4
+Bonjour, je suis un article, 
+je peux avoir des mots en _italique_, 
+d'autres en **gras** et des [liens](http://www.jekyllrb.com).
