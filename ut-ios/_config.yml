@@ -17,9 +17,9 @@ title: Unit Tests on iOS
 email: benjamin.dumont.pro@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Description of some kinds of unit test and how to implement them.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
+baseurl: "/ut-ios" # the subpath of your site, e.g. /blog
+url: "https://benjdum59.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: 
 github_username:  benjdum59
 
 # Build settings
