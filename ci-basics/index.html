@@ -84,11 +84,11 @@
     	<h1>Flow Chart</h1>
     	<div class="mermaid" style="width:150%; height:50%; background-color: #DAE4E4;">
   			graph LR
-      			SCM --> Libs
-      			Libs --> Compile
-      			Compile --> Tests
-      			Tests --> Package
-      			Package --> Deploy
+      			A(SCM) --> B(Libs)
+      			B --> C(Compile)
+      			C --> D(Tests)
+      			D --> E(Package)
+      			E --> F(Deploy)
   		</div>
   		<script src="../tools/flowchart/mermaid.min.js"></script>
   		<script>
