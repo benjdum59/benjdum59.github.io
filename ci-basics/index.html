@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="styles.css" charset="utf-8">
   <link rel="stylesheet" href="../tools/slide/transitions.css" media="screen" charset="utf-8">
   <link rel="import" href="../tools/slide/web-presentation.html">
-  <link rel='import' href='https://cdn.rawgit.com/ChristianKohler/PrismComponents/master/dist/prism-components.html'>
 </head>
 <body>
   <web-presentation>
@@ -80,6 +79,25 @@
 		We have the product. Now, a developer/customer/Product Owner may want to test it. So the product is deployed on a server.
       </p>
     </web-slide>
+    
+	<web-slide data-transition="moveToLeft">
+    	<h1>Flow Chart</h1>
+    	<div class="mermaid" style="width:150%; height:50%; background-color: #DAE4E4;">
+  			graph LR
+      			SCM --> Libs
+      			Libs --> Compile
+      			Compile --> Tests
+      			Tests --> Package
+      			Package --> Deploy
+  		</div>
+  		<script src="../tools/flowchart/mermaid.min.js"></script>
+  		<script>
+  			mermaid.initialize({
+  				startOnLoad:true
+  			});
+  		</script>
+    </web-slide>
+    
 
     <web-slide data-transition="moveToLeft">
       <h1>Features</h1>
