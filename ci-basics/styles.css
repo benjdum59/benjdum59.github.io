@@ -25,6 +25,16 @@ web-slide:nth-of-type(6) { background: #ffff99; }
 web-slide:nth-of-type(7) { background: #FF6666; }
 web-slide:nth-of-type(8) { background: #fafafa; }
 web-slide:nth-of-type(9) { background: #7bb7fa; }
+web-slide:nth-of-type(10) { background: #fafafa; }
+web-slide:nth-of-type(11) { background: #fdc162; }
+web-slide:nth-of-type(12) { background: #60d7a9; }
+web-slide:nth-of-type(13) { background: #7bb7fa; }
+web-slide:nth-of-type(14) { background: #0ac2d2; }
+web-slide:nth-of-type(15) { background: #ffff99; }
+web-slide:nth-of-type(16) { background: #FF6666; }
+web-slide:nth-of-type(17) { background: #fafafa; }
+web-slide:nth-of-type(18) { background: #7bb7fa; }
+
 
 pre {
   font-size: 0.7em;
