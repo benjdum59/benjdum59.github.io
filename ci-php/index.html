@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>CI - PHP</title>
-  <link rel="stylesheet" href="../tools/slide/transitions.css" media="screen" charset="utf-8"/>
-  <link rel="import" href="../tools/slide/web-presentation.html"/>
-  <link rel="stylesheet" href="./styles.css" charset="utf-8"/>
+  <link rel="stylesheet" href="styles.css" charset="utf-8">
+  <link rel="stylesheet" href="../tools/slide/transitions.css" media="screen" charset="utf-8">
+  <link rel="import" href="../tools/slide/web-presentation.html">
   <link href="../tools/syntaxHighlight/prism.css" rel="stylesheet"/>
 </head>
 <body>
@@ -21,12 +21,12 @@
       <p><small>Press Space to continue</small></p>
     </web-slide-title>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Introduction</h1>
       <h2>The theory: <a href="../ci-basics/index.html">read the article</a></h2>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Introduction - Tools</h1>
       <h2>
       	<ul>
@@ -34,9 +34,9 @@
       		<li>Jenkins</li>
       	</ul>
       </h2>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Maven - Intro</h1>
 	  <p>Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information.
 	  	<br/>
@@ -44,18 +44,18 @@
 	  	<a href="https://maven.apache.org/">Official website</a>
 	  </p>
 	  <img src="../logos/maven.png"/>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Maven - Intro</h1>
       <ul>
       	<li>Made for java projects but highly adaptable</li>
       	<li>Most of the project configuration is inside a pom.xml file inside the project</li>
       	<li>Introduce a Build Lifecycle</li>
       </ul>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Maven - Build Lifecycle</h1>
       <ul>
       	<li>validate - validate the project is correct and all necessary information is available</li><br/>
@@ -66,21 +66,21 @@
 		<li>install - install the package into the local repository, for use as a dependency in other projects locally</li><br/>
 		<li>deploy - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.</li><br/>
       </ul>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Jenkins - Intro</h1>
 	  <h2>Build great things at any scale</h2>
 	  <p>The leading open source automation server, Jenkins provides hundreds of plugins to support building, deploying and automating any project.</p>
       <img src="../logos/jenkins.png"/>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveFromBottom">
+    <web-slide data-transition="moveFromBottom">
       <h1>Jenkins - Leaderboard</h1>
       <img src="./pictures/jenkins-leaderboard.png" style="width:100%"/">
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveFromBottom">
+    <web-slide data-transition="moveFromBottom">
       <h1>Pre-requisites</h1>
       <ul>
       	<li>A server for CI</li>
@@ -88,15 +88,15 @@
       	<li>A development server which will be the target of the deployed product</li>
       	<li>(optional) Maven installed on the current machine to create the package locally before making it on jenkins</li>
       </ul>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Project configuration for CI</h1>
       <h2>Remember the phases</h2>
 	  <img src="../ci-basics/pictures/flowcharts/ci.png"/>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Project configuration for CI</h1>
       <h2>Phase 0 - Init the project inside pom.xml</h2>
       <pre style="width:50%"><code class="language-xml">
@@ -110,15 +110,15 @@
 	&lt;build&gt;
     &lt;/build&gt;
 &lt;/project&gt;</code></pre>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Project configuration for CI</h1>
       <h2>Phase 1 - SCM</h2>
 	  Getting the code from SCM is a part of Jenkins' job. We will do that later.
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Project configuration for CI</h1>
       <h2>Phase 2 - Get the libs</h2>
 	  <p>Put all the commands you need to download libraries inside a shell script in the project. The script will be run before the compilation phase of Maven.</p>
@@ -144,9 +144,9 @@
             &lt;/executions&gt;
         &lt;/plugin&gt;
     ...</code></pre>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Project configuration for CI</h1>
       <h2>Phase 2' - Tells Maven where the sources are</h2>
 	  <p>As it is not a Java project, you have to tell Maven the sources location.
@@ -168,9 +168,9 @@
             &lt;/resource&gt;
         &lt;/resources&gt;
     ...</code></pre>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Project configuration for CI</h1>
       <h2>Phase 3 - The compilation</h2>
 	  <p>There are no real compilation in a PHP project. So, tell that to Maven
@@ -188,9 +188,9 @@
                 &lt;/executions&gt;
             &lt;/plugin&gt;
     ...</code></pre>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Project configuration for CI</h1>
       <h2>Phase 4 - Tests</h2>
 	  <p>You can reuse the maven exec plugin to run a sell script in charge of running tests (like in phase 2 when getting the libs) or call a bash command. This is an example of running directly a bash command: 
@@ -213,9 +213,9 @@
     &lt;/goals&gt;
 &lt;/execution&gt;
     ...</code></pre>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Project configuration for CI</h1>
       <h2>Phase 5 - Package: Make the rpm</h2>
 	  <p>Use the <a href="http://www.mojohaus.org/rpm-maven-plugin/">Maven rpm plugin</a> which is plugged by default on the Maven's package phase.<br/>
@@ -261,9 +261,9 @@
          &lt;/mappings&gt;
      &lt;/configuration&gt;
  &lt;/plugin&gt;</code></pre>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Project configuration for CI</h1>
       <h2>Phase 5' - Package: Make the rpm - post installation</h2>
 	  <p>
@@ -286,9 +286,9 @@
               &lt;fileEncoding&gt;utf-8&lt;/fileEncoding&gt;
          &lt;/postinstallScriptlet&gt;
      &lt;/configuration&gt;</code></pre>
-    </web-slide-title>
+    </web-slide>
     
-    <web-slide-title data-transition="moveToLeft">
+    <web-slide data-transition="moveToLeft">
       <h1>Project configuration for CI</h1>
       <h2>Test your package generation</h2>
 	  <p>
@@ -301,11 +301,113 @@
 	  mvn clean package -Denvironment=prod 
 	  #make sure you have ./scripts/post-install/post-install-prod.sh file
 </code></pre>
-    </web-slide-title>
+    </web-slide>
+    
+    <web-slide data-transition="moveToLeft">
+      <h1>Project configuration for CI</h1>
+      <h2>Intermediate phase: send rpm to a product browser</h2>
+	  <p>
+	  	Nexus is a great tool for product storage and is well plugged with Maven.<br/>
+	  	You have to set the repository informations (url, authentication) in the settings.xml file (in Maven installation or homeDirectory/.m2) and configure the project to use this repository.
+	  </p>
+    </web-slide>
+    
+    <web-slide data-transition="moveToLeft">
+      <h1>Project configuration for CI</h1>
+      <h2>Intermediate phase: send rpm to a product browser</h2>
+      <h2>settings.xml</h2>
+	  <pre style="width:85%"><code class="language-xml">&lt;?xml version="1.0"?&gt;
+&lt;settings&gt;
+  &lt;profiles&gt;
+    &lt;profile&gt;
+      &lt;id&gt;myprofile&lt;/id&gt;
+      &lt;repositories&gt;
+        &lt;repository&gt;
+          &lt;id&gt;private-snapshot&lt;/id&gt;
+          &lt;url&gt;https://nexus.host.fr/nexus/content/repositories/private-snapshot/&lt;/url&gt;
+          &lt;releases&gt;
+            &lt;enabled&gt;false&lt;/enabled&gt;
+          &lt;/releases&gt;
+          &lt;snapshots&gt;
+            &lt;enabled&gt;true&lt;/enabled&gt;
+          &lt;/snapshots&gt;
+        &lt;/repository&gt;
+      &lt;/repositories&gt;
+    &lt;/profile&gt;
+  &lt;/profiles&gt;
+  &lt;activeProfiles&gt;
+    &lt;activeProfile&gt;myprofile&lt;/activeProfile&gt;
+  &lt;/activeProfiles&gt;
+  &lt;servers&gt;
+   &lt;server&gt;
+      &lt;id&gt;private-snapshot&lt;/id&gt;
+      &lt;username&gt;benjdum59&lt;/username&gt;
+      &lt;password&gt;password&lt;/password&gt;
+    &lt;/server&gt;
+  &lt;/servers&gt;
+&lt;/settings&gt;</code></pre>
+    </web-slide>
+    
+    <web-slide data-transition="moveToLeft">
+      <h1>Project configuration for CI</h1>
+      <h2>Intermediate phase: send rpm to a product browser</h2>
+      <h2>pom.xml</h2>
+	  <pre style="width:85%"><code class="language-xml">&lt;/build&gt;
+&lt;profiles&gt;
+    &lt;profile&gt;
+        &lt;id&gt;default&lt;/id&gt;
+        &lt;activation&gt;
+            &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
+        &lt;/activation&gt;
+    	&lt;distributionManagement&gt;
+            &lt;repository&gt;
+                &lt;id&gt;private-releases&lt;/id&gt;
+                &lt;url&gt;https://nexus.host.fr/nexus/content/repositories/private-release/&lt;/url&gt;
+            &lt;/repository&gt;
+            &lt;snapshotRepository&gt;
+                &lt;id&gt;private-snapshots&lt;/id&gt;
+                &lt;url&gt;https://nexus.host.fr/nexus/content/repositories/private-snapshot&lt;/url&gt;
+            &lt;/snapshotRepository&gt;
+        &lt;/distributionManagement&gt;
+    &lt;/profile&gt;
+&lt;/profiles&gt;</code></pre>
+    </web-slide>
+    
+    <web-slide data-transition="moveToLeft">
+      <h1>Project configuration for CI</h1>
+      <h2>Intermediate phase: send rpm to a product browser</h2>
+      <h2>Upload rpm</h2>
+	  <pre style="width:85%"><code class="language-bash">mvn clean deploy -Denvironment="stg"</code></pre>
+	  <h2>Note: All Maven phases will be run (compile, test, package) before deploy.</h2>
+    </web-slide>
+    
+    <web-slide data-transition="moveToLeft">
+      <h1>Project configuration for CI</h1>
+      <h2>Phase 6 - Deploy the product on a development environment</h2>
+      <p>This part is done with Jenkins. We will see it later.</p>
+    </web-slide>
+    
+    <web-slide data-transition="moveFromBottom">
+      <h1>End of Project configuration</h1>
+      <div id="graphDiv"  style="width:100%; height:50%; background-color: #DAE4E4;">
+	    <img 
+    			src="pictures/flowcharts/ic-end-project-configuration.svg" 
+    			alt="CI Flow Chart"
+    			height="200px"
+    			width="100%" />
+
+  		</div>
+  	</web-slide>
+    
+    <web-slide data-transition="moveFromBottom">
+      <h1>Jenkins configuration</h1>
+      <h2>Create a new Maven job</h2>
+    </web-slide>
 
 
     
   </web-presentation>
   <script src="../tools/syntaxHighlight/prism.js"></script>
+  <script src="https://use.fontawesome.com/c05a9d6e77.js"></script>
 </body>
 </html>
