@@ -2,12 +2,11 @@ web-slide-title {
   font-family: sans-serif;
 }
 
-web-slide-title h1 { color: rgba(0,0,0,0.5); }
-web-slide-title h2 { color: rgba(0,0,0,0.3); margin: 0; }
+.reveal h1 { color: rgba(0,0,0,0.5); }
+h2 { color: rgba(0,0,0,0.3); margin: 0; }
 
-web-slide h1 { color: rgba(0,0,0,0.5); margin-bottom: 0; }
-web-slide h2 { color: rgba(0,0,0,0.3); margin-bottom: 0; }
-web-slide p { color: rgba(0,0,0,0.7 ); margin: 5px 0; }
+
+p { color: rgba(0,0,0,0.7 ); margin: 5px 0; }
 
 web-slide:not(:last-child)::shadow div#content {
   justify-content: initial;
