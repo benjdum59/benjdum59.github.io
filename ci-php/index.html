@@ -6,7 +6,6 @@
       <link rel="stylesheet" href="../tools/revealjs/css/reveal.css">
       <link rel="stylesheet" href="../tools/revealjs/css/theme/white.css">
       <link href="../tools/syntaxHighlight/prism.css" rel="stylesheet"/>
-      
       <script src="../tools/syntaxHighlight/prism.js"/>
       <script src="../tools/headjs/head.core.min.js"></script>
    </head>
@@ -19,9 +18,9 @@
                <br/>
                <h4>Tools: Jenkins, Maven, Nexus</h4>
                <p><small>Press Space to continue</small></p>
-               <!--aside class="notes">
+               <aside class="notes">
                   Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-                  </aside-->
+               </aside>
             </section>
             <section>
                <h3>Introduction</h3>
@@ -517,7 +516,7 @@
       <script src="https://use.fontawesome.com/c05a9d6e77.js"></script>
       <script src="../tools/revealjs/js/reveal.js"></script>
       <script>
-         Reveal.initialize({ 
+         Reveal.initialize({
          	dependencies: [
          		// Speaker notes
          		{ src: '../tools/revealjs/plugin/notes/notes.js', async: true }
@@ -525,7 +524,19 @@
          });
          Reveal.configure({ 
          	slideNumber: true, 
-         	showSlideNumber: 'speaker' 
+         	showSlideNumber: 'speaker',
+         	keyboard: {
+         		78: function() { Reveal.configure(
+         			{ 
+         				showNotes: true
+         			}
+         		)} ,
+         		72: function() { Reveal.configure(
+         			{ 
+         				showNotes: false
+         			}
+         		)} 
+         	} 
          });
       </script>
    </body>
