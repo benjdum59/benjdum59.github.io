@@ -1,111 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>CI - PHP</title>
-  <link rel="stylesheet" href="../tools/revealjs/css/reveal.css">
-  <link rel="stylesheet" href="../tools/revealjs/css/theme/white.css">
-  <link rel="stylesheet" href="styles.css" charset="utf-8">
-  <link rel="stylesheet" href="../tools/slide/transitions.css" media="screen" charset="utf-8">
-  <link href="../tools/syntaxHighlight/prism.css" rel="stylesheet"/>
-  <script src="../tools/headjs/head.core.min.js"></script>
-</head>
-<body>
-		<div class="reveal">
-			<div class="slides">
-
-    <section>
-      <h3>CI - PHP Maven project</h3>
-      <h4>How to do a CI for a PHP project</h4>
-      <br/>
-      <h4>Tools: Jenkins, Maven, Nexus</h4>
-      <p><small>Press Space to continue</small></p>
-      	<!--aside class="notes">
-		Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-	</aside-->
-    </section>
-    
-    <section>
-      <h3>Introduction</h3>
-      <h4>The theory: <a href="../ci-basics/index.html">read the article</a></h4>
-    </section>
-    
-    <section>
-      <h3>Introduction - Tools</h3>
-      <h4>
-      	<ul>
-      		<li>Maven</li>
-      		<li>Jenkins</li>
-      	</ul>
-      </h4>
-    </section>
-    
-    <section>
-      <h3>Maven - Intro</h3>
-	  <p>Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information.
-	  	<br/>
-	  	<br/>
-	  	<a href="https://maven.apache.org/">Official website</a>
-	  </p>
-	  <img data-src="../logos/maven.png"/>
-    </section>
-    
-    <section>
-      <h3>Maven - Intro</h3>
-      <ul>
-      	<li>Made for java projects but highly adaptable</li>
-      	<li>Most of the project configuration is inside a pom.xml file inside the project</li>
-      	<li>Introduce a Build Lifecycle</li>
-      </ul>
-    </section>
-    
-    <section>
-      <h3>Maven - Build Lifecycle</h3>
-      <small>
-      <ul>
-      	<li>validate - validate the project is correct and all necessary information is available</li>
-		<li>compile - compile the source code of the project</li>
-		<li>test - test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed</li>
-		<li>package - take the compiled code and package it in its distributable format, such as a JAR.</li>
-		<li>verify - run any checks on results of integration tests to ensure quality criteria are met</li>
-		<li>install - install the package into the local repository, for use as a dependency in other projects locally</li>
-		<li>deploy - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.</li>
-      </ul>
-      </small>
-    </section>
-    
-    <section>
-      <h3>Jenkins - Intro</h3>
-	  <h4>Build great things at any scale</h4>
-	  <p>The leading open source automation server, Jenkins provides hundreds of plugins to support building, deploying and automating any project.</p>
-      <img data-src="../logos/jenkins.png"/>
-    </section>
-    
-    <section>
-      <h3>Jenkins - Leaderboard</h3>
-      <img data-src="./pictures/jenkins-leaderboard.png" style="width:100%"/">
-    </section>
-    
-    <section>
-      <h3>Pre-requisites</h3>
-      <ul>
-      	<li>A server for CI</li>
-      	<li>Jenkins, Maven and maybe other tools installed on this server</li>
-      	<li>A development server which will be the target of the deployed product</li>
-      	<li>(optional) Maven installed on the current machine to create the package locally before making it on jenkins</li>
-      </ul>
-    </section>
-    
-    <section>
-      <h3>Project configuration for CI</h3>
-      <h4>Remember the phases</h4>
-	  <img data-src="../ci-basics/pictures/flowcharts/ci.png"/>
-    </section>
-    
-    <section>
-      <h3>Project configuration for CI - Phase 0</h3>
-      <h4>Init the project inside pom.xml</h4>
-      <pre style="width:100%"><code class="language-xml">
+   <head>
+      <meta charset="UTF-8">
+      <title>CI - PHP</title>
+      <link rel="stylesheet" href="../tools/revealjs/css/reveal.css">
+      <link rel="stylesheet" href="../tools/revealjs/css/theme/white.css">
+      <link href="../tools/syntaxHighlight/prism.css" rel="stylesheet"/>
+      
+      <script src="../tools/syntaxHighlight/prism.js"/>
+      <script src="../tools/headjs/head.core.min.js"></script>
+   </head>
+   <body>
+      <div class="reveal">
+         <div class="slides">
+            <section>
+               <h3>CI - PHP Maven project</h3>
+               <h4>How to do a CI for a PHP project</h4>
+               <br/>
+               <h4>Tools: Jenkins, Maven, Nexus</h4>
+               <p><small>Press Space to continue</small></p>
+               <!--aside class="notes">
+                  Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+                  </aside-->
+            </section>
+            <section>
+               <h3>Introduction</h3>
+               <h4>The theory: <a href="../ci-basics/index.html">read the article</a></h4>
+            </section>
+            <section>
+               <h3>Introduction - Tools</h3>
+               <h4>
+                  <ul>
+                     <li>Maven</li>
+                     <li>Jenkins</li>
+                  </ul>
+               </h4>
+            </section>
+            <section>
+               <h3>Maven - Intro</h3>
+               <p>Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information.
+                  <br/>
+                  <br/>
+                  <a href="https://maven.apache.org/">Official website</a>
+               </p>
+               <img data-src="../logos/maven.png"/>
+            </section>
+            <section>
+               <h3>Maven - Intro</h3>
+               <ul>
+                  <li>Made for java projects but highly adaptable</li>
+                  <li>Most of the project configuration is inside a pom.xml file inside the project</li>
+                  <li>Introduce a Build Lifecycle</li>
+               </ul>
+            </section>
+            <section>
+               <h3>Maven - Build Lifecycle</h3>
+               <small>
+                  <ul>
+                     <li>validate - validate the project is correct and all necessary information is available</li>
+                     <li>compile - compile the source code of the project</li>
+                     <li>test - test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed</li>
+                     <li>package - take the compiled code and package it in its distributable format, such as a JAR.</li>
+                     <li>verify - run any checks on results of integration tests to ensure quality criteria are met</li>
+                     <li>install - install the package into the local repository, for use as a dependency in other projects locally</li>
+                     <li>deploy - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.</li>
+                  </ul>
+               </small>
+            </section>
+            <section>
+               <h3>Jenkins - Intro</h3>
+               <h4>Build great things at any scale</h4>
+               <p>The leading open source automation server, Jenkins provides hundreds of plugins to support building, deploying and automating any project.</p>
+               <img data-src="../logos/jenkins.png"/>
+            </section>
+            <section>
+               <h3>Jenkins - Leaderboard</h3>
+               <img data-src="./pictures/jenkins-leaderboard.png" style="width:100%"/">
+            </section>
+            <section>
+               <h3>Pre-requisites</h3>
+               <ul>
+                  <li>A server for CI</li>
+                  <li>Jenkins, Maven and maybe other tools installed on this server</li>
+                  <li>A development server which will be the target of the deployed product</li>
+                  <li>(optional) Maven installed on the current machine to create the package locally before making it on jenkins</li>
+               </ul>
+            </section>
+            <section>
+               <h3>Project configuration for CI</h3>
+               <h4>Remember the phases</h4>
+               <img data-src="../ci-basics/pictures/flowcharts/ci.png"/>
+            </section>
+            <section>
+               <h3>Project configuration for CI - Phase 0</h3>
+               <h4>Init the project inside pom.xml</h4>
+               <pre style="width:100%"><code class="language-xml">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
     &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
@@ -116,19 +105,17 @@
 	&lt;build&gt;
     &lt;/build&gt;
 &lt;/project&gt;</code></pre>
-    </section>
-    
-    <section>
-      <h4>Project configuration for CI - Phase 1</h4>
-      <h4>SCM</h4>
-	  Getting the code from SCM is a part of Jenkins' job. We will do that later.
-    </section>
-    
-    <section>
-      <h4>Project configuration for CI - Phase 2</h4>
-      <h4>Get the libs</h4>
-	  <p><small>Put all the commands you need to download libraries inside a shell script in the project. The script will be run before the compilation phase of Maven.</small></p>
-	  <pre style="width:100%"><code class="language-xml">
+            </section>
+            <section>
+               <h4>Project configuration for CI - Phase 1</h4>
+               <h4>SCM</h4>
+               Getting the code from SCM is a part of Jenkins' job. We will do that later.
+            </section>
+            <section>
+               <h4>Project configuration for CI - Phase 2</h4>
+               <h4>Get the libs</h4>
+               <p><small>Put all the commands you need to download libraries inside a shell script in the project. The script will be run before the compilation phase of Maven.</small></p>
+               <pre style="width:100%"><code class="language-xml">
 &lt;build&gt;
    ...	
 	&lt;plugins&gt;
@@ -150,15 +137,15 @@
             &lt;/executions&gt;
         &lt;/plugin&gt;
     ...</code></pre>
-    </section>
-    
-    <section>
-      <h4>Project configuration for CI - Phase 2'</h4>
-      <h4>Tells Maven where the sources are</h4>
-	  <p><small>As it is not a Java project, you have to tell Maven the sources location.
-	  We must exclude the Maven's working directory (aka target) and some files used or generated by Maven.
-	  </small></p>
-	  <pre style="width:100%"><code class="language-xml">
+            </section>
+            <section>
+               <h4>Project configuration for CI - Phase 2'</h4>
+               <h4>Tells Maven where the sources are</h4>
+               <p><small>As it is not a Java project, you have to tell Maven the sources location.
+                  We must exclude the Maven's working directory (aka target) and some files used or generated by Maven.
+                  </small>
+               </p>
+               <pre style="width:100%"><code class="language-xml">
     &lt;build&gt;
     ...
         &lt;resources&gt;
@@ -174,14 +161,14 @@
             &lt;/resource&gt;
         &lt;/resources&gt;
     ...</code></pre>
-    </section>
-    
-    <section>
-      <h4>Project configuration for CI - Phase 3</h4>
-      <h4>The compilation</h4>
-	  <p><small>There are no real compilation in a PHP project. So, tell that to Maven
-	  </small></p>
-	  <pre style="width:100%"><code class="language-xml">
+            </section>
+            <section>
+               <h4>Project configuration for CI - Phase 3</h4>
+               <h4>The compilation</h4>
+               <p><small>There are no real compilation in a PHP project. So, tell that to Maven
+                  </small>
+               </p>
+               <pre style="width:100%"><code class="language-xml">
             &lt;plugin&gt;
                 &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
                 &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
@@ -194,14 +181,14 @@
                 &lt;/executions&gt;
             &lt;/plugin&gt;
     ...</code></pre>
-    </section>
-    
-    <section>
-      <h4>Project configuration for CI - Phase 4</h4>
-      <h4>Tests</h4>
-	  <p><small>You can reuse the maven exec plugin to run a sell script in charge of running tests (like in phase 2 when getting the libs) or call a bash command. This is an example of running directly a bash command: 
-	  </small></p>
-	  <pre style="width:100%"><code class="language-xml">
+            </section>
+            <section>
+               <h4>Project configuration for CI - Phase 4</h4>
+               <h4>Tests</h4>
+               <p><small>You can reuse the maven exec plugin to run a sell script in charge of running tests (like in phase 2 when getting the libs) or call a bash command. This is an example of running directly a bash command: 
+                  </small>
+               </p>
+               <pre style="width:100%"><code class="language-xml">
 &lt;execution&gt;
     &lt;id&gt;phpunit&lt;/id&gt;
     &lt;phase&gt;test&lt;/phase&gt;
@@ -219,15 +206,16 @@
     &lt;/goals&gt;
 &lt;/execution&gt;
     ...</code></pre>
-    </section>
-    
-    <section>
-      <h4>Project configuration for CI - Phase 5</h3>
-      <h5>Package: Make the rpm</h5>
-	  <p><small>Use the <a href="http://www.mojohaus.org/rpm-maven-plugin/">Maven rpm plugin</a> which is plugged by default on the Maven's package phase.<br/>
-	  Note: I won't describe how works a RPM. The only thing you you have to know is that a RPM is a kind of executable and one of its tasks is to move source code to a predefined destination (see the mapping tag). 
-	  </small></p>
-	  <pre style="width:100%"><code class="language-xml">
+            </section>
+            <section>
+               <h4>
+               Project configuration for CI - Phase 5</h3>
+               <h5>Package: Make the rpm</h5>
+               <p><small>Use the <a href="http://www.mojohaus.org/rpm-maven-plugin/">Maven rpm plugin</a> which is plugged by default on the Maven's package phase.<br/>
+                  Note: I won't describe how works a RPM. The only thing you you have to know is that a RPM is a kind of executable and one of its tasks is to move source code to a predefined destination (see the mapping tag). 
+                  </small>
+               </p>
+               <pre style="width:100%"><code class="language-xml">
  &lt;plugin&gt;
      &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
      &lt;artifactId&gt;rpm-maven-plugin&lt;/artifactId&gt;
@@ -267,16 +255,16 @@
          &lt;/mappings&gt;
      &lt;/configuration&gt;
  &lt;/plugin&gt;</code></pre>
-    </section>
-    
-    <section>
-      <h4>Project configuration for CI - Phase 5'</h4>
-      <h5>Package: Make the rpm - post installation</h5>
-	  <p><small>
-	  	RPM can run scripts before and after the installation. Create a post-install script containing all you need (e.g.: Clear cache, database migration...). 
-	  	As scripts may differ for a development and a production environment, you may use different scripts and call the one you need using the environment variable.
-	  </small></p>
-	  <pre style="width:100%"><code class="language-xml">
+            </section>
+            <section>
+               <h4>Project configuration for CI - Phase 5'</h4>
+               <h5>Package: Make the rpm - post installation</h5>
+               <p><small>
+                  RPM can run scripts before and after the installation. Create a post-install script containing all you need (e.g.: Clear cache, database migration...). 
+                  As scripts may differ for a development and a production environment, you may use different scripts and call the one you need using the environment variable.
+                  </small>
+               </p>
+               <pre style="width:100%"><code class="language-xml">
 &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
 ...
     &lt;packaging&gt;rpm&lt;/packaging&gt;
@@ -292,37 +280,35 @@
               &lt;fileEncoding&gt;utf-8&lt;/fileEncoding&gt;
          &lt;/postinstallScriptlet&gt;
      &lt;/configuration&gt;</code></pre>
-    </section>
-    
-    <section>
-      <h4>Project configuration for CI</h4>
-      <h4>Test your package generation</h4>
-	  <p>
-	  	Default value of environment is "stg" (from the example).
-	  </p>
-	  <pre style="width:100%"><code class="language-bash">	  mvn clean package
+            </section>
+            <section>
+               <h4>Project configuration for CI</h4>
+               <h4>Test your package generation</h4>
+               <p>
+                  Default value of environment is "stg" (from the example).
+               </p>
+               <pre style="width:100%"><code class="language-bash">	  mvn clean package
 	  #OR
 	  mvn clean package -Denvironement=stg #does the same thing
 	  #OR
 	  mvn clean package -Denvironment=prod 
 	  #make sure you have ./scripts/post-install/post-install-prod.sh file
 </code></pre>
-    </section>
-    
-    <section>
-      <h4>Project configuration for CI</h4>
-      <h4>Intermediate phase: send rpm to a product browser</h4>
-	  <p><small>
-	  	Nexus is a great tool for product storage and is well plugged with Maven.<br/>
-	  	You have to set the repository informations (url, authentication) in the settings.xml file (in Maven installation or homeDirectory/.m2) and configure the project to use this repository.
-	  </small></p>
-    </section>
-    
-    <section>
-      <h4>Project configuration for CI</h4>
-      <h4>Intermediate phase: send rpm to a product browser</h4>
-      <h4>settings.xml</h4>
-	  <pre style="width:100%"><code class="language-xml">&lt;?xml version="1.0"?&gt;
+            </section>
+            <section>
+               <h4>Project configuration for CI</h4>
+               <h4>Intermediate phase: send rpm to a product browser</h4>
+               <p><small>
+                  Nexus is a great tool for product storage and is well plugged with Maven.<br/>
+                  You have to set the repository informations (url, authentication) in the settings.xml file (in Maven installation or homeDirectory/.m2) and configure the project to use this repository.
+                  </small>
+               </p>
+            </section>
+            <section>
+               <h4>Project configuration for CI</h4>
+               <h4>Intermediate phase: send rpm to a product browser</h4>
+               <h4>settings.xml</h4>
+               <pre style="width:100%"><code class="language-xml">&lt;?xml version="1.0"?&gt;
 &lt;settings&gt;
   &lt;profiles&gt;
     &lt;profile&gt;
@@ -352,13 +338,12 @@
     &lt;/server&gt;
   &lt;/servers&gt;
 &lt;/settings&gt;</code></pre>
-    </section>
-    
-    <section>
-      <h4>Project configuration for CI</h4>
-      <h4>Intermediate phase: send rpm to a product browser</h4>
-      <h4>pom.xml</h4>
-	  <pre style="width:100%"><code class="language-xml">&lt;/build&gt;
+            </section>
+            <section>
+               <h4>Project configuration for CI</h4>
+               <h4>Intermediate phase: send rpm to a product browser</h4>
+               <h4>pom.xml</h4>
+               <pre style="width:100%"><code class="language-xml">&lt;/build&gt;
 &lt;profiles&gt;
     &lt;profile&gt;
         &lt;id&gt;default&lt;/id&gt;
@@ -377,201 +362,177 @@
         &lt;/distributionManagement&gt;
     &lt;/profile&gt;
 &lt;/profiles&gt;</code></pre>
-    </section>
-    
-    <section>
-      <h4>Project configuration for CI</h4>
-      <h4>Intermediate phase: send rpm to a product browser</h4>
-      <h4>Upload rpm</h4>
-	  <pre style="width:100%"><code class="language-bash">mvn clean deploy -Denvironment="stg"</code></pre>
-	  <h4>Note: All Maven phases will be run (compile, test, package) before deploy.</h4>
-    </section>
-    
-    <section>
-      <h4>Project configuration for CI</h4>
-      <h4>Phase 6 - Deploy the product on a development environment</h4>
-      <p>This part is done with Jenkins. We will see it later.</p>
-    </section>
-    
-    <section>
-      <h4>End of Project configuration</h4>
-      <div id="graphDiv"  style="width:100%; height:50%; background-color: #DAE4E4;">
-	    <img 
-    			src="pictures/flowcharts/ic-end-project-configuration.svg" 
-    			alt="CI Flow Chart"
-    			height="200px"
-    			width="100%" />
-
-  		</div>
-  	</section>
-    
-    <section>
-      <h4>Jenkins configuration - New job</h4>
-      <h4>Create a new Maven job</h4>
-      <img data-src="./pictures/jenkins-newjob.png" style="width:80%"/>
-    </section>
-    
-    <section>
-      <h4>Jenkins configuration - Configure development environment for Jenkins</h4>
-      <p><small>Install plugin "Publish Over SSH" and configure the development server to accept jenkins' public ssh key</small></p>
-      <img data-src="./pictures/jenkins-publish-over-ssh.png" style="height:400px"/>
-    </section>
-    
-    <section>
-      <h4>Jenkins configuration - Configure SCM in job</h4>
-      <img data-src="./pictures/jenkins-configure-scm.png" style="height:500px"/>
-    </section>
-    
-    <section>
-      <h4>Jenkins configuration - Trigger build</h4>
-      <img data-src="./pictures/jenkins-trigger-build.png" style="height:400px"/>
-    </section>
-    
-    <section>
-      <h4>Jenkins configuration - Pre-build steps 1</h4>
-      <p><small>Delete workspace to be sure everything is clean!</small></p>
-      <img data-src="./pictures/jenkins-trigger-build.png" style="height:400px"/>
-    </section>
-    
-    <section>
-      <h4>Jenkins configuration - Pre-build steps 2</h4>
-      <p><small>Clean product in development environment if possible</small></p>
-      <img data-src="./pictures/jenkins-prebuild-clean-product.png" style="height:500px"/> 
-    </section>
-    
-    <section>
-      <h4>Jenkins configuration - Build step</h4>
-      <p><small>Invoke Maven package or deploy phase.</small></p>
-      <img data-src="./pictures/jenkins-build.png" style="height:200px"/> 
-    </section>
-    
-    <section>
-      <h4>Jenkins configuration - Post Build step</h4>
-      <p><small>Deploy phase: send rpm to server and install it</small></p>
-      <img data-src="./pictures/jenkins-post-build-rpm.png" style="height:500px"/> 
-    </section>
-    
-    <section>
-      <h2>CI should work!</h2>
-    </section>
-    
-    <section>
-      <h2>Make a release</h2>
-      <p><small>Remember...</small></p>
-            <div id="graphDiv"  style="width:100%; height:50%; background-color: #DAE4E4;">
-	    <img 
-    			src="../ci-basics/pictures/flowcharts/release.svg" 
-    			alt="CI Flow Chart"
-    			height="200px"
-    			width="100%" />
-
-  		</div>
-  		<p><small>Only 2 phases to implement: tag and archive</p></small>
-    </section>
-    
-    <section>
-      <h2>Release with Maven</h2>
-      <pre style="width:100%"><code class="language-bash">	  
+            </section>
+            <section>
+               <h4>Project configuration for CI</h4>
+               <h4>Intermediate phase: send rpm to a product browser</h4>
+               <h4>Upload rpm</h4>
+               <pre style="width:100%"><code class="language-bash">mvn clean deploy -Denvironment="stg"</code></pre>
+               <h4>Note: All Maven phases will be run (compile, test, package) before deploy.</h4>
+            </section>
+            <section>
+               <h4>Project configuration for CI</h4>
+               <h4>Phase 6 - Deploy the product on a development environment</h4>
+               <p>This part is done with Jenkins. We will see it later.</p>
+            </section>
+            <section>
+               <h4>End of Project configuration</h4>
+               <div id="graphDiv"  style="width:100%; height:50%; background-color: #DAE4E4;">
+                  <img 
+                     src="pictures/flowcharts/ic-end-project-configuration.svg" 
+                     alt="CI Flow Chart"
+                     height="200px"
+                     width="100%" />
+               </div>
+            </section>
+            <section>
+               <h4>Jenkins configuration - New job</h4>
+               <h4>Create a new Maven job</h4>
+               <img data-src="./pictures/jenkins-newjob.png" style="width:80%"/>
+            </section>
+            <section>
+               <h4>Jenkins configuration - Configure development environment for Jenkins</h4>
+               <p><small>Install plugin "Publish Over SSH" and configure the development server to accept jenkins' public ssh key</small></p>
+               <img data-src="./pictures/jenkins-publish-over-ssh.png" style="height:400px"/>
+            </section>
+            <section>
+               <h4>Jenkins configuration - Configure SCM in job</h4>
+               <img data-src="./pictures/jenkins-configure-scm.png" style="height:500px"/>
+            </section>
+            <section>
+               <h4>Jenkins configuration - Trigger build</h4>
+               <img data-src="./pictures/jenkins-trigger-build.png" style="height:400px"/>
+            </section>
+            <section>
+               <h4>Jenkins configuration - jenkins-delete-workspace</h4>
+               <p><small>Delete workspace to be sure everything is clean!</small></p>
+               <img data-src="./pictures/jenkins-trigger-build.png" style="height:400px"/>
+            </section>
+            <section>
+               <h4>Jenkins configuration - Pre-build steps 2</h4>
+               <p><small>Clean product in development environment if possible</small></p>
+               <img data-src="./pictures/jenkins-prebuild-clean-product.png" style="height:500px"/> 
+            </section>
+            <section>
+               <h4>Jenkins configuration - Build step</h4>
+               <p><small>Invoke Maven package or deploy phase.</small></p>
+               <img data-src="./pictures/jenkins-build.png" style="height:200px"/> 
+            </section>
+            <section>
+               <h4>Jenkins configuration - Post Build step</h4>
+               <p><small>Deploy phase: send rpm to server and install it</small></p>
+               <img data-src="./pictures/jenkins-post-build-rpm.png" style="height:500px"/> 
+            </section>
+            <section>
+               <h2>CI should work!</h2>
+            </section>
+            <section>
+               <h2>Make a release</h2>
+               <p><small>Remember...</small></p>
+               <div id="graphDiv"  style="width:100%; height:50%; background-color: #DAE4E4;">
+                  <img 
+                     src="../ci-basics/pictures/flowcharts/release.svg" 
+                     alt="CI Flow Chart"
+                     height="200px"
+                     width="100%" />
+               </div>
+               <p><small>Only 2 phases to implement: tag and archive</p>
+               </small>
+            </section>
+            <section>
+               <h2>Release with Maven</h2>
+               <pre style="width:100%"><code class="language-bash">	  
       mvn clean release:prepare
       mvn clean release:perform
 	</code></pre>
-	<a href="http://maven.apache.org/maven-release/maven-release-plugin/">Official documentation</a>
-    </section>
-    
-    <section>
-      <h2>mvn release:prepare</h2>
-	  <p><small>
-	  Preparing a release goes through the following release phases:
-	  <ul>
-	  	<li>Check that there are no uncommitted changes in the sources</li>
-	  	<li>Check that there are no SNAPSHOT dependencies</li>
-	  	<li>Change the version in the POMs from x-SNAPSHOT to a new version</li>
-	  	<li>Transform the SCM information in the POM to include the final destination of the tag</li>
-	  	<li>Run the project tests against the modified POMs to confirm everything is in working order</li>
-	  	<li>Commit the modified POMs</li>
-	  	<li>Tag the code in the SCM with a version name</li>
-	  	<li>Bump the version in the POMs to a new value y-SNAPSHOT</li>
-	  	<li>Commit the modified POMs</li>
-	  </ul>
-	  </small></p>
-    </section>
-    
-    <section>
-      <h2>mvn release:perform</h2>
-	  <p><small>
-	  Performing a release runs the following release phases:
-	  <ul>
-	  	<li>Checkout from an SCM URL with optional tag</li>
-	  	<li>Run the predefined Maven goals to release the project (e.g.: Archive rpm in Nexus)</li>
-	  </ul>
-	  </small></p>
-    </section>
-    
-    <section>
-      <h2>Configure pom.xml for release</h2>
-	  <p><small>Tells Maven the SCM configuration</small></p>
-	        <pre style="width:100%"><code class="language-xml">	...
+               <a href="http://maven.apache.org/maven-release/maven-release-plugin/">Official documentation</a>
+            </section>
+            <section>
+               <h2>mvn release:prepare</h2>
+               <p>
+                  <small>
+                     Preparing a release goes through the following release phases:
+               <ul>
+               <li>Check that there are no uncommitted changes in the sources</li>
+               <li>Check that there are no SNAPSHOT dependencies</li>
+               <li>Change the version in the POMs from x-SNAPSHOT to a new version</li>
+               <li>Transform the SCM information in the POM to include the final destination of the tag</li>
+               <li>Run the project tests against the modified POMs to confirm everything is in working order</li>
+               <li>Commit the modified POMs</li>
+               <li>Tag the code in the SCM with a version name</li>
+               <li>Bump the version in the POMs to a new value y-SNAPSHOT</li>
+               <li>Commit the modified POMs</li>
+               </ul>
+               </small></p>
+            </section>
+            <section>
+               <h2>mvn release:perform</h2>
+               <p>
+                  <small>
+                     Performing a release runs the following release phases:
+               <ul>
+               <li>Checkout from an SCM URL with optional tag</li>
+               <li>Run the predefined Maven goals to release the project (e.g.: Archive rpm in Nexus)</li>
+               </ul>
+               </small></p>
+            </section>
+            <section>
+               <h2>Configure pom.xml for release</h2>
+               <p><small>Tells Maven the SCM configuration</small></p>
+               <pre style="width:100%"><code class="language-xml">	...
     &lt;scm&gt;
         &lt;url&gt;https://github.org/benjdum59/helloworld.git&lt;/url&gt;
         &lt;connection&gt;scm:git:ssh://git@github.org/benjdum59/helloworld.git&lt;/connection&gt;
         &lt;developerConnection&gt;scm:git:ssh://git@github.org/benjdum59/helloworld.git&lt;/developerConnection&gt;
     &lt;/scm&gt;</code></pre>
-        <p style="color:red;"><small>And add your Nexus repository informations in distributionManagement tag (pom.xml) and in settings.xml</small></p>
-    </section>
-
-    <section>
-      <h2>Jenkins configuration - Maven Release Plugin</h2>
-	  <p><small>Install Maven Release Plugin. Now you can configure the job for release in Build environment section</small></p>
-	  <img data-src="./pictures/jenkins-maven-release-build-environment.png" style="height:400px"/>
-    </section>
-    
-    <section>
-      <h2>Jenkins configuration - SCM</h2>
-	  <p><small>Jenkins checkouts git repositories in detached mode. In order to be able to commit a tag, you have to be in attached mode.</small></p>
-	  <img data-src="./pictures/jenkins-prestep-git.png" style="height:200px"/>
-    </section>
-    
-    <section>
-      <h2>How to make a release with Jenkins</h2>
-	  <p><small>Click on Perform Maven Release and fill the form.</small></p>
-	  <img data-src="./pictures/jenkins-perform-release1.png" style="height:300px"/>
-	  <img data-src="./pictures/jenkins-perform-release2.png" style="height:300px"/>
-    </section>
-    
-    <section>
-      <h2>How to make a release with Jenkins</h2>
-	  <p><small>Click on Perform Maven Release and fill the form.</small></p>
-	  <img data-src="./pictures/jenkins-perform-release1.png" style="height:300px"/>
-	  <img data-src="./pictures/jenkins-perform-release2.png" style="height:300px"/>
-    </section>
-    
-    <section data-background-image="../logos/thatsallfolks.gif">
-    </section>
-    
-    <section>
-      <h2>Where to go from here?</h2>
-	  <h4>Static code analysis (e.g. SonarQube, Codacy)</h4>
-    </section>
-    
-    <section data-background-image="../logos/cat/anyquestions.jpg" data-background-size="50%">
-    </section>
-
-    			</div>
-		</div>
-		  
-  <script src="../tools/revealjs/lib/js/head.min.js">
-  <script src="../tools/syntaxHighlight/prism.js"></script>
-  <script src="https://use.fontawesome.com/c05a9d6e77.js"></script>
-
-		<script src="../tools/revealjs/js/reveal.js"></script>
-		<script>
-			Reveal.initialize({ 
-				showSlideNumber: 'speaker',
-					dependencies: [
-						// Speaker notes
-						{ src: '../tools/revealjs/plugin/notes/notes.js', async: true }
-					] 
-			});
-		</script>
-</body>
+               <p style="color:red;"><small>And add your Nexus repository informations in distributionManagement tag (pom.xml) and in settings.xml</small></p>
+            </section>
+            <section>
+               <h2>Jenkins configuration - Maven Release Plugin</h2>
+               <p><small>Install Maven Release Plugin. Now you can configure the job for release in Build environment section</small></p>
+               <img data-src="./pictures/jenkins-maven-release-build-environment.png" style="height:400px"/>
+            </section>
+            <section>
+               <h2>Jenkins configuration - SCM</h2>
+               <p><small>Jenkins checkouts git repositories in detached mode. In order to be able to commit a tag, you have to be in attached mode.</small></p>
+               <img data-src="./pictures/jenkins-prestep-git.png" style="height:200px"/>
+            </section>
+            <section>
+               <h2>How to make a release with Jenkins</h2>
+               <p><small>Click on Perform Maven Release and fill the form.</small></p>
+               <img data-src="./pictures/jenkins-perform-release1.png" style="height:300px"/>
+               <img data-src="./pictures/jenkins-perform-release2.png" style="height:300px"/>
+            </section>
+            <section>
+               <h2>How to make a release with Jenkins</h2>
+               <p><small>Click on Perform Maven Release and fill the form.</small></p>
+               <img data-src="./pictures/jenkins-perform-release1.png" style="height:300px"/>
+               <img data-src="./pictures/jenkins-perform-release2.png" style="height:300px"/>
+            </section>
+            <section data-background-image="../logos/thatsallfolks.gif">
+            </section>
+            <section>
+               <h2>Where to go from here?</h2>
+               <h4>Static code analysis (e.g. SonarQube, Codacy)</h4>
+            </section>
+            <section data-background-image="../logos/cat/anyquestions.jpg" data-background-size="50%">
+            </section>
+         </div>
+      </div>
+      <script src="../tools/revealjs/lib/js/head.min.js"/>
+      <script src="https://use.fontawesome.com/c05a9d6e77.js"></script>
+      <script src="../tools/revealjs/js/reveal.js"></script>
+      <script>
+         Reveal.initialize({ 
+         	dependencies: [
+         		// Speaker notes
+         		{ src: '../tools/revealjs/plugin/notes/notes.js', async: true }
+         	] 
+         });
+         Reveal.configure({ 
+         	slideNumber: true, 
+         	showSlideNumber: 'speaker' 
+         });
+      </script>
+   </body>
 </html>
