@@ -17,14 +17,19 @@
                <h4>How to do a CI for a PHP project</h4>
                <br/>
                <h4>Tools: Jenkins, Maven, Nexus</h4>
-               <p><small>Press Space to continue</small></p>
+               <p><small>Press Space to continue
+               
+               </small></p>
                <aside class="notes">
-                  Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+                  Target: PHP Dev, DevOps. Since there is no one only way to make CI, take this presentation as an example.
                </aside>
             </section>
             <section>
                <h3>Introduction</h3>
                <h4>The theory: <a href="../ci-basics/index.html">read the article</a></h4>
+                 <aside class="notes">
+                  	Please read this article first especially the flow charts.
+                 </aside>
             </section>
             <section>
                <h3>Introduction - Tools</h3>
@@ -65,6 +70,9 @@
                      <li>deploy - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.</li>
                   </ul>
                </small>
+               <aside class="notes">
+               		For a more complete build lifecycle, visit <a href="http://maven.apache.org/ref/3.5.0/maven-core/lifecycles.html"> this site</a>
+               </aside>
             </section>
             <section>
                <h3>Jenkins - Intro</h3>
@@ -82,8 +90,11 @@
                   <li>A server for CI</li>
                   <li>Jenkins, Maven and maybe other tools installed on this server</li>
                   <li>A development server which will be the target of the deployed product</li>
-                  <li>(optional) Maven installed on the current machine to create the package locally before making it on jenkins</li>
+                  <li>(recommended) Maven installed on the current machine to create the package locally before making it on jenkins</li>
                </ul>
+               <aside class="notes">
+               	 Be sure that the Jenkin server can communicate with the development server via ssh keys.
+               </aside>
             </section>
             <section>
                <h3>Project configuration for CI</h3>
@@ -104,12 +115,25 @@
 	&lt;build&gt;
     &lt;/build&gt;
 &lt;/project&gt;</code></pre>
+			<aside class="notes">
+				GAV (groupId:artifactId:version) is the unique identifier for a product.<br/>
+				GroupId is like a java package (e.g.: com.mycompany).<br/>
+				ArtifactId is the project name (e.g.: helloWorld).<br/>
+				Version is on 3 digits (X.Y.Z) and may be terminated by "-SNAPSHOT".<br/>
+				X stands for major version, Y for minor and Z for bugfix.<br/>
+				"-SNAPSHOT" indicates that the product is still in its development phase (not stable). If there are no "-SNAPSHOT", this is a release (stable) and won't be modified. e.g: 1.0.0-SNAPSHOT
+			</aside>
             </section>
+            
             <section>
                <h4>Project configuration for CI - Phase 1</h4>
                <h4>SCM</h4>
                Getting the code from SCM is a part of Jenkins' job. We will do that later.
+               <aside class="notes">
+               	For all the presentation, we will use Git as SCM.	
+               </aside>
             </section>
+            
             <section>
                <h4>Project configuration for CI - Phase 2</h4>
                <h4>Get the libs</h4>
@@ -136,7 +160,14 @@
             &lt;/executions&gt;
         &lt;/plugin&gt;
     ...</code></pre>
+    		<aside class="notes">
+    			prepare.sh can have some command lines to install libraries or transform some code using composer, bower, npm, grunt, gulp...<br/>
+    			e.g.:<pre><code class="language-bash">composer install --no-interaction --no-scripts --prefer-dist
+npm install
+npm run build</code></pre>
+    		</aside>
             </section>
+            
             <section>
                <h4>Project configuration for CI - Phase 2'</h4>
                <h4>Tells Maven where the sources are</h4>
@@ -160,7 +191,11 @@
             &lt;/resource&gt;
         &lt;/resources&gt;
     ...</code></pre>
+    			<aside class="notes">
+    				This will copy all the source code defined into the target/classes directory which will be the workspace for the next Maven's phases. 
+    			</aside>
             </section>
+            
             <section>
                <h4>Project configuration for CI - Phase 3</h4>
                <h4>The compilation</h4>
@@ -181,6 +216,7 @@
             &lt;/plugin&gt;
     ...</code></pre>
             </section>
+            
             <section>
                <h4>Project configuration for CI - Phase 4</h4>
                <h4>Tests</h4>
@@ -205,7 +241,11 @@
     &lt;/goals&gt;
 &lt;/execution&gt;
     ...</code></pre>
+    			<aside class="notes">
+    				As there is no compile phase for PHP projects, you can also do that inside the prepare.sh script. 
+    			</aside>
             </section>
+            
             <section>
                <h4>
                Project configuration for CI - Phase 5</h3>
@@ -214,8 +254,7 @@
                   Note: I won't describe how works a RPM. The only thing you you have to know is that a RPM is a kind of executable and one of its tasks is to move source code to a predefined destination (see the mapping tag). 
                   </small>
                </p>
-               <pre style="width:100%"><code class="language-xml">
- &lt;plugin&gt;
+               <pre style="width:100%"><code class="language-xml"> &lt;plugin&gt;
      &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
      &lt;artifactId&gt;rpm-maven-plugin&lt;/artifactId&gt;
      &lt;version&gt;2.1.5&lt;/version&gt;
@@ -279,6 +318,27 @@
               &lt;fileEncoding&gt;utf-8&lt;/fileEncoding&gt;
          &lt;/postinstallScriptlet&gt;
      &lt;/configuration&gt;</code></pre>
+     			<aside class="notes">
+     				Example of a post-install script:
+     				<pre><code class="language-bash">cd /var/www/helloWorld
+php bin/console doctrine:migration:migrate --no-interaction --env=stg
+if [ $? -ne 0 ]; then
+    exit $?
+fi
+php bin/console assets:install --no-interaction --env=stg
+if [ $? -ne 0 ]; then
+    exit $?
+fi
+php bin/console c:c --no-warmup --no-interaction --env=stg
+if [ $? -ne 0 ]; then
+    exit $?
+fi
+php bin/console c:warmup --no-interaction --env=stg
+if [ $? -ne 0 ]; then
+    exit $?
+fi
+     				</code></pre>
+     			</aside>
             </section>
             <section>
                <h4>Project configuration for CI</h4>
@@ -293,7 +353,11 @@
 	  mvn clean package -Denvironment=prod 
 	  #make sure you have ./scripts/post-install/post-install-prod.sh file
 </code></pre>
+				<aside class="notes">
+					Testing your package generation may be very long on jenkins and analyzing errors inside Jenkins' console may be very difficult and boring for beginners. That's why I recommend to do that locally.
+				</aside>
             </section>
+            
             <section>
                <h4>Project configuration for CI</h4>
                <h4>Intermediate phase: send rpm to a product browser</h4>
@@ -303,6 +367,7 @@
                   </small>
                </p>
             </section>
+            
             <section>
                <h4>Project configuration for CI</h4>
                <h4>Intermediate phase: send rpm to a product browser</h4>
@@ -362,13 +427,19 @@
     &lt;/profile&gt;
 &lt;/profiles&gt;</code></pre>
             </section>
+            
             <section>
                <h4>Project configuration for CI</h4>
                <h4>Intermediate phase: send rpm to a product browser</h4>
                <h4>Upload rpm</h4>
                <pre style="width:100%"><code class="language-bash">mvn clean deploy -Denvironment="stg"</code></pre>
                <h4>Note: All Maven phases will be run (compile, test, package) before deploy.</h4>
+                <aside class="notes">
+               		Optional phase for CI. If you do not want to store snapshot products, you can use
+               		<pre><code class="language-bash">mvn clean package -Denvironment="stg"</code></pre>
+               </aside>
             </section>
+            
             <section>
                <h4>Project configuration for CI</h4>
                <h4>Phase 6 - Deploy the product on a development environment</h4>
@@ -383,16 +454,25 @@
                      height="200px"
                      width="100%" />
                </div>
+               <aside class="notes">
+               	  Everything should work locally before configuring Jenkins.
+               </aside>
             </section>
             <section>
                <h4>Jenkins configuration - New job</h4>
                <h4>Create a new Maven job</h4>
                <img data-src="./pictures/jenkins-newjob.png" style="width:80%"/>
+               <aside class="notes">
+               		You can also create a freestyle job but you won't be able to release your application like I will explain.
+               </aside>
             </section>
             <section>
                <h4>Jenkins configuration - Configure development environment for Jenkins</h4>
                <p><small>Install plugin "Publish Over SSH" and configure the development server to accept jenkins' public ssh key</small></p>
                <img data-src="./pictures/jenkins-publish-over-ssh.png" style="height:400px"/>
+               <aside class="notes">
+               		Can also be done with a shell script but less fun.
+               </aside>
             </section>
             <section>
                <h4>Jenkins configuration - Configure SCM in job</h4>
@@ -401,11 +481,17 @@
             <section>
                <h4>Jenkins configuration - Trigger build</h4>
                <img data-src="./pictures/jenkins-trigger-build.png" style="height:400px"/>
+               <aside class="notes">
+               		Run every 5 minutes only if there are some modifications in the project. You can use a git hook to tells Jenkins that changes have been committed.
+               </aside>
             </section>
             <section>
                <h4>Jenkins configuration - jenkins-delete-workspace</h4>
                <p><small>Delete workspace to be sure everything is clean!</small></p>
                <img data-src="./pictures/jenkins-trigger-build.png" style="height:400px"/>
+               <aside class="notes">
+               		To be sure we can create a product from scratch and eventually to prevent git conflicts
+               </aside>
             </section>
             <section>
                <h4>Jenkins configuration - Pre-build steps 2</h4>
@@ -421,6 +507,21 @@
                <h4>Jenkins configuration - Post Build step</h4>
                <p><small>Deploy phase: send rpm to server and install it</small></p>
                <img data-src="./pictures/jenkins-post-build-rpm.png" style="height:500px"/> 
+               <aside class="notes">
+               		You can use a shell script phase instead of the plugin like this one (to adapt):
+               		<pre><code class="language-bash">
+TARGET="admin@helloworld.server.fr"
+SSH_OPTS="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+TEMP_FILE="helloworld.$RANDOM"
+TARGET_FILE="/tmp/$TEMP_FILE"
+
+scp $SSH_OPTS target/RPM/*.rpm "$TARGET:$TARGET_FILE"
+
+ssh $SSH_OPTS $TARGET sudo bash -ex &lt;&lt;EOF
+	rpm -ivH $TARGET_FILE
+EOF
+               		</code></pre>
+               </aside>
             </section>
             <section>
                <h2>CI should work!</h2>
