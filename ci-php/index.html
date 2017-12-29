@@ -565,17 +565,20 @@ EOF
                </ul>
                </small></p>
             </section>
+            
             <section>
                <h2>mvn release:perform</h2>
                <p>
                   <small>
                      Performing a release runs the following release phases:
-               <ul>
-               <li>Checkout from an SCM URL with optional tag</li>
-               <li>Run the predefined Maven goals to release the project (e.g.: Archive rpm in Nexus)</li>
-               </ul>
-               </small></p>
+               		<ul>
+               			<li>Checkout from an SCM URL with optional tag</li>
+               			<li>Run the predefined Maven goals to release the project (e.g.: Archive rpm in Nexus)</li>
+               		</ul>
+               	  </small>
+              </p>
             </section>
+            
             <section>
                <h2>Configure pom.xml for release</h2>
                <p><small>Tells Maven the SCM configuration</small></p>
@@ -587,16 +590,25 @@ EOF
     &lt;/scm&gt;</code></pre>
                <p style="color:red;"><small>And add your Nexus repository informations in distributionManagement tag (pom.xml) and in settings.xml</small></p>
             </section>
+            
             <section>
                <h2>Jenkins configuration - Maven Release Plugin</h2>
                <p><small>Install Maven Release Plugin. Now you can configure the job for release in Build environment section</small></p>
                <img data-src="./pictures/jenkins-maven-release-build-environment.png" style="height:400px"/>
+               <aside class="notes">
+               		This plugin is only available for Maven job (and not for freestyle jobs)
+               </aside>
             </section>
+            
             <section>
                <h2>Jenkins configuration - SCM</h2>
                <p><small>Jenkins checkouts git repositories in detached mode. In order to be able to commit a tag, you have to be in attached mode.</small></p>
                <img data-src="./pictures/jenkins-prestep-git.png" style="height:200px"/>
+               <aside class="notes">
+               		There must be a better way to do that, in the SCM configuration I guess.
+               </aside>
             </section>
+            
             <section>
                <h2>How to make a release with Jenkins</h2>
                <p><small>Click on Perform Maven Release and fill the form.</small></p>
