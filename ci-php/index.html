@@ -516,6 +516,7 @@
       <script src="https://use.fontawesome.com/c05a9d6e77.js"></script>
       <script src="../tools/revealjs/js/reveal.js"></script>
       <script>
+      var showNotes = false;
          Reveal.initialize({
          	dependencies: [
          		// Speaker notes
@@ -526,9 +527,11 @@
          	slideNumber: true, 
          	showSlideNumber: 'speaker',
          	keyboard: {
-         		78: function() { Reveal.configure(
+         		78: function() { 
+         		showNotes = !showNotes;
+         		Reveal.configure(
          			{ 
-         				showNotes: true
+         				showNotes: showNotes
          			}
          		)} ,
          		72: function() { Reveal.configure(
