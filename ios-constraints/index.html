@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Constraints for iOS Views</title>
+      <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+      <link rel="icon" href="../favicon.ico" type="image/x-icon">
+      <link rel="stylesheet" href="../tools/revealjs/css/reveal.css">
+      <link rel="stylesheet" href="../tools/revealjs/css/theme/white.css">
+      <link href="../tools/syntaxHighlight/prism.css" rel="stylesheet"/>
+      <script src="../tools/syntaxHighlight/prism.js"></script>
+      <script src="../tools/headjs/head.core.min.js"></script>
+   </head>
+   <body>
+      <style type="text/css">
+         div.footL {
+         bottom: 0%;
+         display: block;
+         position: absolute;
+         right: 1%;
+         z-index: 30;
+         width: 200px;
+         height: 5%;
+         text-align: right;
+         font-size:large;
+         }
+         div.headL {
+         top: 0%;
+         display: block;
+         position: absolute;
+         left: 1%;
+         z-index: 30;
+         width: 60px;
+         height: 60px;
+         text-align: left;
+         font-size:large;
+         }
+         div.headR {
+         top: 0%;
+         display: block;
+         position: absolute;
+         right: 1%;
+         z-index: 30;
+         width: 60px;
+         height: 60px;
+         text-align: right;
+         font-size:large;
+         }
+      </style>
+      <div class="reveal">
+         <div class="slides">
+            <section>
+               <div class="headL">
+                  <img src="../logos/apple/apple-colored.jpeg" style="border-style: none;box-shadow: none;"/>
+               </div>
+               <div class="headR">
+                  <img src="../logos/apple/apple-grey.png" style="border-style: none;box-shadow: none;"/>
+               </div>
+               <h3>Design views for iOS</h3>
+               <h4>How to do use constraints to create views for multiple devices</h4>
+               <br/>
+               <h4>Tools: XCode</h4>
+               <br/>
+               <p><small>Press <font color="0000FF">'Space'</font> to continue<br/><br/>
+                  Press <font color="0000FF">'n'</font> to show/hide notes<br/><br/>
+                  Press <font color="0000FF">'s'</font> for speaker mode              
+                  </small>
+               </p>
+               <aside class="notes">
+               </aside>
+               <div class="footL">
+                  <footnote>Benjamin Dumont</footnote>
+               </div>
+            </section>
+            <section>
+               <h3>History</h3>
+               <div class="tableholder">
+                  <table class="graybox" border="" cellspacing="0" cellpadding="5" style="font-size:10px;">
+                     <colgroup span="1">
+                        <col width="145">
+                     </colgroup>
+                     <thead>
+                        <tr>
+                           <th scope="col" class="TableHeading_TableRow_TableCell">
+                              <p class="para">Date</p>
+                           </th>
+                           <th scope="col" class="TableHeading_TableRow_TableCell">
+                              <p class="para">Notes</p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td scope="row">
+                              <p class="para">2016-03-21</p>
+                           </td>
+                           <td>
+                              <p class="para">
+                                 Added Changing Constraints chapter.
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td scope="row">
+                              <p class="para">2015-12-10</p>
+                           </td>
+                           <td>
+                              <p class="para">
+                                 Added advanced recipes to the cookbook. Incorporated other minor updates.
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td scope="row">
+                              <p class="para">2015-09-16</p>
+                           </td>
+                           <td>
+                              <p class="para">
+                                 Updated to include information about using Auto Layout with iOS size classes. Added many Auto Layout examples.
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td scope="row">
+                              <p class="para">2013-09-18</p>
+                           </td>
+                           <td>
+                              <p class="para">
+                                 Updated to describe Auto Layout in Xcode 5.
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td scope="row">
+                              <p class="para">2012-09-19</p>
+                           </td>
+                           <td>
+                              <p class="para">
+                                 <font color="red">Added to iOS Library. Added links to WWDC videos.</font>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td scope="row">
+                              <p class="para">2012-02-16</p>
+                           </td>
+                           <td>
+                              <p class="para">
+                                 Corrected minor code error.
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td scope="row">
+                              <p class="para">2011-07-06</p>
+                           </td>
+                           <td>
+                              <p class="para">
+                                 New document that describes the constraint-based system for laying out user interface elements.
+                              </p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </section>
+            <section>
+               <h3>Before the constraints</h3>
+               <h4>
+					Storyboard and were were kind of WYSIWYG.
+               </h4>
+            </section>
+             <section>
+               <p>
+                  <b>Github:</b> benjdum59<br/>
+                  <b>Website:</b> benjdum59.github.io<br/>
+                  <b>Mail:</b> benjamin.dumont.pro@gmail.com<br/><br/>
+                  <a href="../index.html">Go to Homepage</a>
+               </p>
+            </section>
+         </div>
+      </div>
+      <script src="../tools/revealjs/lib/js/head.min.js"></script>
+      <script src="../tools/revealjs/js/reveal.js"></script>
+      <script>
+         var showNotes = false;
+            Reveal.initialize({
+            	dependencies: [
+            		// Speaker notes
+            		{ src: '../tools/revealjs/plugin/notes/notes.js', async: true },
+            		{ src: 'node_modules/reveal.js-menu/menu.js' }
+            	]
+            });
+            Reveal.configure({ 
+            	slideNumber: true, 
+            	showSlideNumber: 'speaker',
+            	keyboard: {
+            		78: function() { 
+            		showNotes = !showNotes;
+            		Reveal.configure(
+            			{ 
+            				showNotes: showNotes
+            			}
+            		)} ,
+            		72: function() { Reveal.configure(
+            			{ 
+            				showNotes: false
+            			}
+            		)} 
+            	} 
+            });
+      </script>
+   </body>
+</html>
