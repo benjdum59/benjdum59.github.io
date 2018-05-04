@@ -46,6 +46,7 @@
          text-align: right;
          font-size:large;
          }
+
       </style>
       <div class="reveal">
          <div class="slides">
@@ -172,22 +173,22 @@
             </section>
             <section>
                <h3>...and comes the iPhone 5</h3>
-               <h4>
+               <p>
 					<ul>
 						<li>New screen size</li>
 						<li>Introduction of relative Layout</li>
 					</ul>
-               </h4>
+               </p>
             </section>
             <section>
-               <h3>Example 1 - no constraints - 1/3<h3>
-               <h4>
+               <h3>Example 1 - no constraints - 1/3</h3>
+               <p>
 					<ul>
 						<li>Create a new Swift project</li>
 						<li>Do the same storyboard as in the screenshot</li>
 						<li>Do NOT use constraints</li>
 					</ul>
-               </h4>
+               </p>
             </section>
             <section>
                <h3>Example 1 - no constraints - 2/3</h3>
@@ -201,50 +202,92 @@
                <img src="images/example1-no-constraints/iPhone8-landscape.png" style="width:20%;"/>
             </section>
             <section>
-               <h3>Constraints - The basics 1/2<h3>
-               <h4>
+               <h3>Constraints - The basics 1/2</h3>
+               <p>
 					<ul>
 						<li>All positions for the current view are relative to its superview or an other element in the same view hierarchy</li>
 						<li>Generally, 4 constraints are needed</li>
 					</ul>
-               </h4>
+				</p>
             </section>
             <section>
-               <h3>Constraints - The basics 2/2 - Storyboard<h3>
+               <h3>Constraints - The basics 2/2 - Storyboard</h3>
                <img src="images/constraints-thebasics/storyboard.png" style="height:200px"/>
-                <h5>
+                <p>
 					<ul>
 						<li>Top, Leading (Left), Trailing (Right), Bottom</li>
 						<li>Width, Height</li>
 					</ul>
-               </h5>
+               </p>
             </section>
             <section>
-               <h3>Example 2 - Constraints - The basics 1/2<h3>
-                <h5>
+               <h3>Example 2 - Constraints - The basics 1/2</h3>
+                <p>
 					<ul>
 						<li>Create a new entry in the menu</li>
 						<li>Duplicate the Green View Controller and make it the destination of the new entry (push segue)</li>
 						<li>Add constraints on the white view (fixed height)</li>
 					</ul>
-               </h5>
+               </p>
             </section>
             <section>
-               <h3>Example 2 - Constraints - The basics 2/2<h3>
+               <h3>Example 2 - Constraints - The basics 2/2</h3>
                <img src="images/example2-thebasics/iPhone8-portrait.png" style="width:20%;"/>
                <img src="images/example2-thebasics/iPhone8Plus-portrait.png" style="width:20%;"/>
                <img src="images/example2-thebasics/iPhone8-landscape.png" style="width:20%;"/>
             </section>
             <section>
-               <h3>Constraints - More features<h3>
+               <h3>Constraints - More features</h3>
+               <p>
                <ul>
                		<li>Aspect Ratio</li>
                		<li>Alignments</li>
-               		 <img src="images/alignments/storyboard.png" style="height:200px"/>
-               </ul>
+               	</ul>
+				</p>
+               	<img src="images/alignments/storyboard.png" style="height:200px"/>
             </section>
             <section data-background-image="images/example3/storyboard.png" data-background-size="contain">
-               <h3>Example 3 - Play with constraints<h3>
+               <h3>Example 3 - Play with constraints</h3>
+            </section>
+            <section>
+               <h3>Special graphical elements</h3>
+    		   <p>Some graphical elements like UILabel or UIButton need only 2 constraints (width and height are optional) since they can determine their size with the elements (text) they have.</p>
+            </section>
+            <section>
+               <h3>Hugging and compression resistance priority</h3>
+    		   <p>Some constraints may be ambiguous. So we need to use hugging and compression resistance priority.</p>
+            </section>
+            <section>
+               <h3>Hugging priority</h3>
+               <p>
+    		   <ul>
+    		   		<li>Original button: [       Click Me      ]</li>
+    		   		<li>Hugging priority > 500: [Click Me]</li>
+    		   		<li>Hugging priority < 500: [       Click Me      ]</li>
+    		   </ul>
+    		   </p>
+            </section>
+            <section>
+               <h3>Compression resistance priority</h3>
+               <p>
+    		   <ul>
+    		   		<li>Original button: [       Click Me      ]</li>
+    		   		<li>Compression resistance priority > 500: [Click Me]</li>
+    		   		<li>Compression resistance priority < 500: [Cli..]</li>
+    		   </ul>
+    		   </p>
+            </section>
+            <section>
+            	<h3>Play with ambiguous constraints</h3>
+            	<p>
+            		<ul>
+            			<li>Create a new entry in the menu</li>
+            			<li>Add to labels (Label1 and Label2) on the same line (without constraints)</li>
+            			<li>On Label1, set Top=0, Leading=0, Trailing=0 to Label2</li>
+            			<li>On Label2, set Top=0, Trailin=0</li>
+            			<li>Play with hugging and compression resistance</li>
+            		</ul>
+            	</p>
             </section>
              <section data-menu-title="Copyright">
                <p>
