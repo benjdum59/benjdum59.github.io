@@ -311,6 +311,33 @@
 				<img src="images/responsive-design/flag-portrait2.png" style="width: 200px"/>
 				<img src="images/responsive-design/flag-landscape2.png" style="width: 200px"/>
             </section>
+            <section>
+            	<h3>Dynamic constraints</h3>
+            	<p>
+            		<ul>
+            			<li>Each constraint can be mapped in code like IBOutlets</li>
+            			<li>To change the value of a constraint, change its constant attribute</li>
+            			<li>To change the priority of a constraint, be sure that the original constraint is not mandatory (priority 1000). There are 4 main steps of priority: 250-Low, 500-Medium, 750-High, 1000-Mandatory</li>
+            		</ul>	
+            	</p>
+            </section>
+            <section>
+            	<h3>Exercise: Dynamic constraints</h3>
+            	<p>
+					Create a green view and put these constraints:
+					<ul>
+						<li>iPhone: Top 8, Bottom 8, Leading 8, Trailing 8</li>
+						<li>iPad: Top 8, Bottom 8, Leading 100, Trailing 100</li>
+						<li>For leading constraint, change only the constraint value</li>
+						<li>For trailing constraint, change constraint priority</li>
+					</ul>
+            	</p>
+            </section>
+            <section>
+            	<h3>Exercise: Dynamic constraints</h3>
+				<img src="images/dynamic-constraints/iphone.png" style="width: 200px"/>
+				<img src="images/dynamic-constraints/ipad.png" style="width: 450px"/>
+            </section>
              <section data-menu-title="Copyright">
                <p>
                   <b>Github:</b> benjdum59<br/>
