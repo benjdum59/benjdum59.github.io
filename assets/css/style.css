@@ -1699,17 +1699,15 @@ xkeyframes
         margin-left: auto;
         margin-right: auto;
 }
-.flip-image .img-top {
+
+.community-edition:hover .flip-image .img-origin {
     display: none !important;
-    z-index: 99;
-    width: 60px;
-    height: 60px;
-    /*position: relative !important;
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;*/
 }
 
 .community-edition:hover .flip-image .img-top {
-        display: inherit !important;
+    display: inline-block !important;
+}
+
+.community-edition .flip-image .img-top {
+    display: none !important;
 }
