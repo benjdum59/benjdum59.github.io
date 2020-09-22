@@ -1524,6 +1524,7 @@ xkeyframes
     color:#82ca9c;
     margin-bottom: 20px;
 }
+
 .community-edition h4{
     font-size:16px;
     color:#000;
@@ -1690,3 +1691,25 @@ xkeyframes
 }
 
 
+.flip-image{
+        width: 60px;
+        height: 60px;
+        position: relative;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+}
+.flip-image .img-top {
+    display: none !important;
+    z-index: 99;
+    width: 60px;
+    height: 60px;
+    /*position: relative !important;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;*/
+}
+
+.community-edition:hover .flip-image .img-top {
+        display: inherit !important;
+}
