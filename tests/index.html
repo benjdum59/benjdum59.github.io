@@ -475,38 +475,134 @@ struct MixColorsResult {
             <section data-background-image="images/ArchitectureExample.png" data-background-size="contain">
             </section>
             <section>
-               <h3>Compression resistance priority</h3>
-    		   		<pre>Original button: [       Click Me      ]</pre>
-    		   		<pre>Compression resistance priority > 500: [Click Me]</pre>
-    		   		<pre>Compression resistance priority < 500: [Cli..]</pre>
+               <h3>Behavior Driven Development</h3>
+               <ul>
+                  <li>Close to the UI</li>
+                  <li>Passing through the layers is allowed (only data layer is mocked/stubbed)</li>
+                  <li>May use Gherkin language</li>
+               </ul>
             </section>
             <section>
-            	<h3>Programmatic constraints</h3>
-				<pre><code class="language-objectivec">
-[NSLayoutConstraint constraintWithItem:view 
-	attribute:NSLayoutAttributeLeading 
-	relatedBy:NSLayoutRelationEqual 
-	toItem:view.superview 
-	attribute:NSLayoutAttributeLeading 
-	multiplier:1.0 constant:8.0];
-[NSLayoutConstraint 
-	constraintsWithVisualFormat:@"H:|-15-[view]-15-|"
-	options:NSLayoutFormatAlignAllLeft 
-	metrics:nil views:@{@"view":view}];
-				</code></pre>
+               <h3>Gherkin example</h3>
+               <pre>
+                  <code class="language-gherkin">
+Feature: Mixing primary colors
+
+Scenario Outline: Primary Colors
+  
+   Given 1rst color is &lt;color1&gt;
+      And 2nd color is &lt;color2&gt;
+      When I mix
+      Then the result is &lt;result&gt;
+  
+   Examples:
+      | color1 | color2 | result |
+      | red    | red    | red    |
+      | yellow | yellow | yellow |
+      | blue   | blue   | blue   |
+      | red    | yellow | orange |
+      | red    | blue   | purple |
+      | blue   | yellow | green  |
+      | blue   | red    | purple |
+      | yellow | red    | orange |
+      | yellow | blue   | green  |
+                  </code>
+               </pre>
             </section>
             <section>
-            	<h3>Last exercise: Scroll View</h3>
-            	<p>
-            		Embed in all the buttons in the menu view to a Scroll View and solve all the constraint errors.
-            	</p>
-            	<img src="images/scrollview/snapshot.png"">
+               <h3>Run the tests</h3>
+               <pre>
+                  <code class="language-swift">
+// We use XCTest_Gherkin library to run Gherkin tests
+func test_gherkin() throws {
+   NativeRunner.runScenario(featureFile: "MixColorsResultTests.feature",
+                            scenario: "Couleurs primaires",
+                            testCase: self)
+}
+                  </code>
+               </pre>
+            </section>
+            <section>
+               <h3>Mapping between the tests and the Gherkin file</h3>
+               <pre>
+                  <code class="language-swift">
+private final class StepsDefinition: StepDefiner {
+   private var result: UIColor?
+   private var color1: PrimaryColorResult?
+   private var color2: PrimaryColorResult?
+        
+   private enum ColorGherkin: String, MatchedStringRepresentable {         
+      init?(fromMatch: String) {
+         self.init(rawValue: fromMatch)
+      }
+            
+      case red = "red"
+      case blue = "blue"
+      case yellow = "yellow"
+      case purple = "purple"
+      case green = "green"
+      case orange = "orange"
+            
+      var value: UIColor {
+         switch self {
+            case .red:  return UIColor.red
+            case .blue: return UIColor.blue
+            case .yellow: return UIColor.yellow
+            case .green: return UIColor.green
+            case .orange: return UIColor.orange
+            case .purple: return UIColor.purple
+         }
+      }
+            
+      var primaryValue: PrimaryColorResult? {
+         switch self {
+            case .blue: return .blue
+            case .yellow: return .yellow
+            case .red: return .red
+
+            default:
+               return nil
+         }
+      }
+   }
+        
+   override func defineSteps() {
+      step("1rst color is (.*)") { (match: ColorGherkin) in
+         self.color1 = match.primaryValue
+      }
+            
+      step("2nd color is (.*)") { (match: ColorGherkin) in
+         self.color2 = match.primaryValue
+      }
+            
+      step("I mix") {
+         self.result = MixColorsResult().mixColors(self.color1!, self.color2!)
+      }
+            
+      step("the result is (.*)") { (match: ColorGherkin) in
+         XCTAssertEqual(self.result, match.value)
+      }
+   }
+}
+                  </code>
+               </pre>
+            </section>
+            <section>
+               <h3>UI tests</h3>
+               <ul>
+                  <li>Language dependent</li>
+                  <li>Takes time</li>
+                  <li>Difficult to maintain</li>
+                  <li>Must be done at the end of a release</li>
+                  <li>Cannot replace a tester</li>
+               </ul>
+
             </section>
             <section data-background-image="../logos/thatsallfolks.gif" data-menu-title="Questions?">
             </section>
              <section data-menu-title="Copyright">
                <p>
-               	  <b>Source Code:</b> <a href="https://github.com/benjdum59/TutoConstraints.git">Click here</a><br/>
+               	<b>Source Code:</b> <a href="https://github.com/benjdum59/DemoTest">Click here</a><br/>
                   <b>Github:</b> benjdum59<br/>
                   <b>Website:</b> benjdum59.github.io<br/>
                   <b>Mail:</b> benjamin.dumont.pro@gmail.com<br/><br/>
