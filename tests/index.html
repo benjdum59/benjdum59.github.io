@@ -58,7 +58,7 @@
                   <img src="../logos/apple/apple-grey.png" style="border-style: none;box-shadow: none;"/>
                </div>
                <h3>Tests</h3>
-               <h4>How developpers test their code</h4>
+               <h4>How developers test their code</h4>
                <br/>
                <h4>Environment: iOS Application, XCode IDE</h4>
                <br/>
@@ -68,13 +68,17 @@
                   </small>
                </p>
                <aside class="notes">
+                  <ul>
+                     <li>Everyone introduces himself</li>
+                     <li>We will talk about some practices about unit testing used by developers for quality purpose</li>
+                  </ul>
                </aside>
                <div class="footL">
                   <footnote>Benjamin Dumont</footnote>
                </div>
             </section>
             <section>
-               <h3>Presentation/Introduction</h3>
+               <h3>Introduction/Menu</h3>
                <p>
                   <ul>
                      <li>How to write unit a test</li>
@@ -173,6 +177,14 @@ func test_should_return_hello_with_name_when_string_is_a_name() throws {
                   <li>Test first (before coding)</li>
                   <li>Red/Green/Refactor</li>
                </ul>
+               <aside class="notes">
+                  <ul>
+                     <li>Red: Test must fail</li>
+                     <li>Green: Test must succeed after we code</li>
+                     <li>Refactor: Change the code to be more maintainable. No change in tests. Tests must succeed</li>
+                  </ul>
+                  
+               </aside>
             </section>
             <section>
                <h3>Exercise</h3>
@@ -180,6 +192,9 @@ func test_should_return_hello_with_name_when_string_is_a_name() throws {
                 <img src="images/MixColors-ExampleMapping.png"/>
             </section>
             <section data-background-image="images/MixColors-ExampleMappingResult.png" data-background-size="contain">
+               <aside class="notes">
+                  This is the example mapping result
+               </aside>
             </section>
             <section>
                <h3>Let's write some code 1/3</h3>
@@ -190,6 +205,9 @@ func test_should_return_hello_with_name_when_string_is_a_name() throws {
                	<li>A function that mixes the 2 primary colors and returns a color</li>
                </ul>
 				  </p>
+               <aside class="notes">
+                  For making our tests build, we need to develop small code with the less logical as possible (aka: method signature).
+               </aside>
             </section>
             <section>
                <h3>Let's write some code 2/3</h3>
@@ -217,6 +235,9 @@ struct MixColorsResult {
 }
                   </code>
                </pre>
+               <aside class="notes">
+                  Here we set a default value to black since no use case has the result black. The aim is to fail the test (Red)
+               </aside>
             </section>
             <section>
                <h3>Let's write the first test (Red)</h3>
@@ -431,6 +452,9 @@ struct MixColorsResult {
     }
                   </code>
                </pre>
+               <aside class="notes">
+                  Be aware that some cases may not be specified during the Example Mapping. These tests are often linked to technical problems (in this case: permutativity arguments).
+               </aside>
             </section>
             <section>
                <h3>Final code</h3>
@@ -508,6 +532,9 @@ Scenario Outline: Primary Colors
       | yellow | blue   | green  |
                   </code>
                </pre>
+               <aside class="notes">
+                  In this case we use Scenario Outline tu test multiple values. For testing only one value, you can use the keyword Scenario, remove the parameters in the steps and remove the Examples section.
+               </aside>
             </section>
             <section>
                <h3>Run the tests</h3>
@@ -516,7 +543,7 @@ Scenario Outline: Primary Colors
 // We use XCTest_Gherkin library to run Gherkin tests
 func test_gherkin() throws {
    NativeRunner.runScenario(featureFile: "MixColorsResultTests.feature",
-                            scenario: "Couleurs primaires",
+                            scenario: "Primary Colors",
                             testCase: self)
 }
                   </code>
@@ -586,6 +613,9 @@ private final class StepsDefinition: StepDefiner {
 }
                   </code>
                </pre>
+               <aside>
+                  Note: It may take some time to code all the mapping and developer must be familiar with regular expressions.
+               </aside>
             </section>
             <section>
                <h3>UI tests</h3>
@@ -599,6 +629,9 @@ private final class StepsDefinition: StepDefiner {
 
             </section>
             <section data-background-image="../logos/thatsallfolks.gif" data-menu-title="Questions?">
+               <aside class="notes">
+                  Thank you! Any question?
+               </aside>
             </section>
              <section data-menu-title="Copyright">
                <p>
