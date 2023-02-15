@@ -1,0 +1,274 @@
+   <!DOCTYPE html>
+   <html lang="en">
+      <head>
+         <meta charset="UTF-8">
+         <title>iOS Development Introduction</title>
+         <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+         <link rel="icon" href="../favicon.ico" type="image/x-icon">
+         <link rel="stylesheet" href="../tools/revealjs/css/reveal.css">
+         <link rel="stylesheet" href="../tools/revealjs/css/theme/white.css">
+         <link href="../tools/syntaxHighlight/prism.css" rel="stylesheet"/>
+         <script src="../tools/syntaxHighlight/prism.js"></script>
+         <script src="../tools/headjs/head.core.min.js"></script>
+      </head>
+      <body>
+         <style type="text/css">
+            div.footL {
+            bottom: 0%;
+            display: block;
+            position: absolute;
+            right: 1%;
+            z-index: 30;
+            width: 200px;
+            height: 5%;
+            text-align: right;
+            font-size:large;
+            }
+            div.headL {
+            top: 0%;
+            display: block;
+            position: absolute;
+            left: 1%;
+            z-index: 30;
+            width: 60px;
+            height: 60px;
+            text-align: left;
+            font-size:large;
+            }
+            div.headR {
+            top: 0%;
+            display: block;
+            position: absolute;
+            right: 1%;
+            z-index: 30;
+            width: 60px;
+            height: 60px;
+            text-align: right;
+            font-size:large;
+            }
+
+         </style>
+         <div class="reveal">
+            <div class="slides">
+               <section>
+                  <div class="headL">
+                     <img src="../logos/apple/apple-colored.jpeg" style="border-style: none;box-shadow: none;"/>
+                  </div>
+                  <div class="headR">
+                     <img src="../logos/apple/apple-grey.png" style="border-style: none;box-shadow: none;"/>
+                  </div>
+                  <h3>iOS Development Introduction</h3>
+                  <br/>
+                  <h4>Tools: XCode</h4>
+                  <br/>
+                  <p><small>Press <font color="0000FF">'Space'</font> to continue<br/><br/>
+                     Press <font color="0000FF">'n'</font> to show/hide notes<br/><br/>
+                     Press <font color="0000FF">'s'</font> for speaker mode              
+                     </small>
+                  </p>
+                  <aside class="notes">
+                  </aside>
+                  <div class="footL">
+                     <footnote>Benjamin Dumont</footnote>
+                  </div>
+               </section>
+               <section>
+                  <h3>Language</h3>
+                     <ul>
+                        <li>Objective-C (legacy)</li>
+                        <li>Swift</li>
+                     </ul>
+                     <br/>
+                     <p>
+                        Both languages are interropable (with constraints).
+                        <br/>
+                        We will work only on the Swift language on the following slides.
+                     </p>
+               </section>
+               <section>
+                  <h3>Variables and constants</h3>
+                  <pre>
+                     <code class="language-swift">
+let string1 = "Hello World!"
+let string2: String = "Hello World!"
+var string3 = "Hello World!"
+var string4: String = "Hello World!"
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Array</h3>
+                  <pre>
+                     <code class="language-swift">
+let array1 = ["Pierre", "Paul", "Jacques"]
+let array2: [String] = ["Pierre", "Paul", "Jacques"]
+var array3 = [String] = [] // Empty array of strings
+var array4 = [String]() // Empty array of strings
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Optional</h3>
+                  <pre>
+                     <code class="language-swift">
+var string1: String // Mandatory, must be initialized directly or inside constructor
+var string2: String? // Optional, may be nil
+var string3: String! // Mandatory, must not be initialized but must not be nil when used (to prevent crash)
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Unwrap an Optional</h3>
+                  <pre>
+                     <code class="language-swift">
+var string: String? = "Hello World!" // optional, even if initialized
+if let string = string {
+   print(string) // not optional
+}
+// Swift 5.7 version
+if let string {
+   print(string) // not optional
+}
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Guard</h3>
+                  <p>
+                     Guard statement is added to the common list of statements like if, else if, else ...
+                     <br/>
+                     Its body must return something or throw an error
+                  </p>
+                  <pre>
+                     <code class="language-swift">
+var string: String?
+guard let string else {
+   print("string is nil")
+   return
+}
+print("string is not nil")
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Access levels</h3>
+                  <pre>
+                     <code class="language-swift">
+open var ... // Accessible outside and inside a module, allows to subclass and override
+public var ... // Accessible outside and inside a module
+internal var ... // Accessible inside a module (default, keyword not mandatory)
+fileprivate var ... // Accessible inside the current file
+private var ... // Accessible inside the entity and extensions inside the same file
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Functions</h3>
+                  <pre>
+                     <code class="language-swift">
+func fooBar() // Instance Void function
+func fooBar(string: String) -> Int // Instance function taking a String argument and returning an Int
+static func fooBar() // Class method, no instance
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Class and Struct</h3>
+                  <ul>
+                     <li>Define properties to store values</li>
+                     <li>Define methods to provide functionality</li>
+                     <li>Define initializers to set up their initial state</li>
+                     <li>Be extended to expand their functionality beyond a default implementation</li>
+                     <li>Conform to protocols to provide standard functionality of a certain kind</li>
+                  </ul>
+               </section>
+               <section>
+                  <h3>Class additional capabilities</h3>
+                     <li>Inheritance enables one class to inherit the characteristics of another.</li>
+                     <li>Type casting enables you to check and interpret the type of a class instance at runtime.</li>
+                     <li>Deinitializers enable an instance of a class to free up any resources it has assigned.</li>
+                     <li>Reference counting allows more than one reference to a class instance.</li>
+               </section>
+               <section>
+                  <h3>Class vs Struct</h3>
+                  <ul>
+                     <li>Class: Reference</li>
+                     <li>Struct: Value</li>
+                     <li>Use Struct by default, Class when needed</li>
+                  </ul>
+               </section>
+               <section>
+                  <h3>Enum</h3>
+                  <pre>
+                     <code class="language-swift">
+enum Person {
+   case Pierre
+   case Paul
+   case Jacques
+}
+
+// With raw value
+enum MyInt: Int {
+   case one = 1
+   case two
+   case three
+}
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Extensions</h3>
+                  <h4>To extend Class/Struct/Enum capabilities</h4>
+                  <pre>
+                     <code class="language-swift">
+extension String {
+   func appendCurrency() -> String {
+      self + " €"
+   }
+}
+                     </code>
+                  </pre>
+               </section>
+                <section data-menu-title="Copyright">
+                  <p>
+                  	  <b>Source Code:</b> <a href="https://github.com/benjdum59/TutoConstraints.git">Click here</a><br/>
+                     <b>Github:</b> benjdum59<br/>
+                     <b>Website:</b> benjdum59.github.io<br/>
+                     <b>Mail:</b> benjamin.dumont.pro@gmail.com<br/><br/>
+                     <a href="../index.html">Go to Homepage</a>
+                  </p>
+               </section>
+            </div>
+         </div>
+         <script src="../tools/revealjs/lib/js/head.min.js"></script>
+         <script src="../tools/revealjs/js/reveal.js"></script>
+         <script>
+            var showNotes = false;
+               Reveal.initialize({
+               	dependencies: [
+               		// Speaker notes
+               		{ src: '../tools/revealjs/plugin/notes/notes.js', async: true },
+               		{ src: '../tools/reveal.js-menu/menu.js' }
+               	]
+               });
+               Reveal.configure({ 
+               	slideNumber: true, 
+               	showSlideNumber: 'speaker',
+               	keyboard: {
+               		78: function() { 
+               		showNotes = !showNotes;
+               		Reveal.configure(
+               			{ 
+               				showNotes: showNotes
+               			}
+               		)} ,
+               		72: function() { Reveal.configure(
+               			{ 
+               				showNotes: false
+               			}
+               		)} 
+               	} 
+               });
+         </script>
+      </body>
+   </html>
