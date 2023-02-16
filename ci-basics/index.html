@@ -3,12 +3,13 @@
 	<head>
 		<meta charset="UTF-8">
   		<title>CI - the basics</title>
-		<link rel="stylesheet" href="../tools/revealjs/css/reveal.css">
-		<link rel="stylesheet" href="../tools/revealjs/css/theme/white.css">
+		<link rel="stylesheet" href="../tools/revealjs/dist/reveal.css">
+		<link rel="stylesheet" href="../tools/revealjs/dist/theme/white.css">
 		<link rel="stylesheet" href="styles.css" charset="utf-8">
 		<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 		<link rel="icon" href="../favicon.ico" type="image/x-icon">
-		
+    <script src="../tools/reveal.js-menu/menu.js"></script>
+    <script src="../tools/revealjs/plugin/notes/notes.js"></script>
 	</head>
 	<body>
 		<div class="reveal">
@@ -189,9 +190,35 @@
     </section>
 			</div>
 		</div>
-		<script src="../tools/revealjs/js/reveal.js"></script>
-		<script>
-			Reveal.initialize();
-		</script>
+<script src="../tools/revealjs/dist/reveal.js"></script>
+         <script>
+            var showNotes = false;
+               Reveal.initialize({
+                dependencies: [
+                  // Speaker notes
+                  { src: '../tools/revealjs/plugin/notes/notes.js', async: true },
+                  { src: '../tools/reveal.js-menu/menu.js' }
+                ], 
+                  plugins: [ RevealMenu, RevealNotes ],
+               });
+               Reveal.configure({ 
+                slideNumber: true, 
+                showSlideNumber: 'speaker',
+                keyboard: {
+                  78: function() { 
+                  showNotes = !showNotes;
+                  Reveal.configure(
+                    { 
+                      showNotes: showNotes
+                    }
+                  )} ,
+                  72: function() { Reveal.configure(
+                    { 
+                      showNotes: false
+                    }
+                  )} 
+                } 
+               });
+         </script>
 	</body>
 </html>

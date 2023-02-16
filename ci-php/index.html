@@ -5,11 +5,13 @@
       <title>CI - PHP</title>
       <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 	  <link rel="icon" href="../favicon.ico" type="image/x-icon">
-      <link rel="stylesheet" href="../tools/revealjs/css/reveal.css">
-      <link rel="stylesheet" href="../tools/revealjs/css/theme/white.css">
+      <link rel="stylesheet" href="../tools/revealjs/dist/reveal.css">
+      <link rel="stylesheet" href="../tools/revealjs/dist/theme/white.css">
       <link href="../tools/syntaxHighlight/prism.css" rel="stylesheet"/>
       <script src="../tools/syntaxHighlight/prism.js"></script>
       <script src="../tools/headjs/head.core.min.js"></script>
+      <script src="../tools/reveal.js-menu/menu.js"></script>
+      <script src="../tools/revealjs/plugin/notes/notes.js"></script>
    </head>
    <body>
    	  <style type="text/css">
@@ -683,34 +685,35 @@ EOF
             </section>
          </div>
       </div>
-      <script src="../tools/revealjs/lib/js/head.min.js"></script>
-      <script src="../tools/revealjs/js/reveal.js"></script>
-      <script>
-      var showNotes = false;
-         Reveal.initialize({
-         	dependencies: [
-         		// Speaker notes
-         		{ src: '../tools/revealjs/plugin/notes/notes.js', async: true }
-         	]
-         });
-         Reveal.configure({ 
-         	slideNumber: true, 
-         	showSlideNumber: 'speaker',
-         	keyboard: {
-         		78: function() { 
-         		showNotes = !showNotes;
-         		Reveal.configure(
-         			{ 
-         				showNotes: showNotes
-         			}
-         		)} ,
-         		72: function() { Reveal.configure(
-         			{ 
-         				showNotes: false
-         			}
-         		)} 
-         	} 
-         });
-      </script>
+        <script src="../tools/revealjs/dist/reveal.js"></script>
+        <script>
+            var showNotes = false;
+               Reveal.initialize({
+                dependencies: [
+                    // Speaker notes
+                    { src: '../tools/revealjs/plugin/notes/notes.js', async: true },
+                    { src: '../tools/reveal.js-menu/menu.js' }
+                ], 
+                  plugins: [ RevealMenu, RevealNotes ],
+               });
+               Reveal.configure({ 
+                slideNumber: true, 
+                showSlideNumber: 'speaker',
+                keyboard: {
+                    78: function() { 
+                    showNotes = !showNotes;
+                    Reveal.configure(
+                        { 
+                            showNotes: showNotes
+                        }
+                    )} ,
+                    72: function() { Reveal.configure(
+                        { 
+                            showNotes: false
+                        }
+                    )} 
+                } 
+               });
+         </script>
    </body>
 </html>
