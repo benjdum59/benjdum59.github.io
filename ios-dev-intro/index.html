@@ -57,7 +57,7 @@
                   <div class="headR">
                      <img src="../logos/apple/apple-grey.png" style="border-style: none;box-shadow: none;"/>
                   </div>
-                  <h3>iOS Development Introduction</h3>
+                  <h3>Swift(iOS) Development Introduction</h3>
                   <br/>
                   <h4>Tools: XCode</h4>
                   <br/>
@@ -201,12 +201,48 @@ static func fooBar() // Class method, no instance
                      <li>Reference counting allows more than one reference to a class instance.</li>
                </section>
                <section>
-                  <h3>Class vs Struct</h3>
+                  <h3>Class vs Struct (1/3)</h3>
                   <ul>
                      <li>Class: Reference</li>
                      <li>Struct: Value</li>
                      <li>Use Struct by default, Class when needed</li>
                   </ul>
+               </section>
+               <section>
+                  <h3>Class vs Struct (2/3)</h3>
+                  <pre>
+                     <code class="language-swift">
+class MyClass {
+    var value: String
+    
+    init(value: String) {
+        self.value = value
+    }
+}
+
+var myClass1 = MyClass(value: "value")
+var myClass2 = myClass1
+myClass1.value = "new value"
+print("myClass1 value: \(myClass1.value)") // new value
+print("myClass2 value: \(myClass2.value)") // new value
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Class vs Struct (3/3)</h3>
+                 <pre>
+                     <code class="language-swift">
+struct MyStruct {
+    var value: String
+}
+
+var myStruct1 = MyStruct(value: "value")
+var myStruct2 = myStruct1
+myStruct1.value = "new value"
+print("myStruct1 value: \(myStruct1.value)") // new value
+print("myStruct2 value: \(myStruct2.value)") // value
+                     </code>
+                  </pre>
                </section>
                <section>
                   <h3>Enum</h3>
@@ -282,6 +318,90 @@ Array(1...100).map { element -> String? in
 // OR
 Array(1...100)
    .compactMap { element -> String? in [(15, "foobar"), (3, "foo"), (5, "bar")].first(where: { element.isMultiple(of: $0.0) })?.1 }
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Asynchonous code with delegate pattern</h3>
+                   <pre>
+                     <code class="language-swift">
+protocol DoSomething: AnyObject {
+    func printSomething(_ string: String)
+}
+
+class Parent: DoSomething {
+    func printSomething(_ str: String) {
+        print(str)
+    }
+    func onClick() {
+        Child(delegate: self).doSomething()
+    }
+}
+
+class Child {
+    weak private var delegate: DoSomething?
+    init(delegate: DoSomething) {
+        self.delegate = delegate
+    }
+    func doSomething() {
+        delegate?.printSomething("Hello World!")
+    }
+}
+
+Parent().onClick()
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Asynchonous code with closure</h3>
+                   <pre>
+                     <code class="language-swift">
+class Parent {
+    
+    func printSomething(_ str: String) {
+        print(str)
+    }
+    func onClick() {
+        Child { [weak self] string in
+            self?.printSomething(string)
+        }.doSomething()
+    }
+}
+
+class Child {
+    
+    private var completion: (String) -> Void
+    
+    init(completion: @escaping (String) -> Void) {
+        self.completion = completion
+    }
+    func doSomething() {
+        completion("HelloWorld")
+    }
+}
+Parent().onClick()
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Asynchonous code with Reactiv Programming</h3>
+                  <p>
+                     <ul>
+                        <li>RxSwift (external library)</li>
+                        <li>Combine (native, iOS 13 minimum)</li>
+                     </ul>
+                  </p>
+               </section>
+               <section>
+                  <h3>Asynchonous code async/await</h3>
+                  <p>Since Swift 5.5</p>
+                  <pre>
+                     <code class="language-swift">
+func fetchImages() async throws -> [UIImage] {
+  // .. perform data request
+}
+...
+let result = try await fetchImages()
                      </code>
                   </pre>
                </section>
