@@ -102,7 +102,7 @@ var string4: String = "Hello World!"
                      <code class="language-swift">
 let array1 = ["Pierre", "Paul", "Jacques"]
 let array2: [String] = ["Pierre", "Paul", "Jacques"]
-var array3 = [String] = [] // Empty array of strings
+var array3: [String] = [] // Empty array of strings
 var array4 = [String]() // Empty array of strings
                      </code>
                   </pre>
@@ -149,6 +149,17 @@ guard let string else {
 print("string is not nil")
                      </code>
                   </pre>
+               </section>
+               <section>
+                  <h3>Common array methods</h3>
+                  <p>
+                     <ul>
+                        <li>forEach: iterates on each element</li>
+                        <li>map: transforms each element</li>
+                        <li>compactMap: transforms each element and remove nil value</li>
+                        <li>reduce: convert the array to one value (e.g.: used to convert an array of Int to the sum of each element)</li>
+                     </ul>
+                  </p>
                </section>
                <section>
                   <h3>Access levels</h3>
@@ -229,9 +240,53 @@ extension String {
                      </code>
                   </pre>
                </section>
+               <section>
+                  <h3>Protocol</h3>
+                  <h4>To tell an entity its conformance</h4>
+                  <pre>
+                     <code class="language-swift">
+protocol MyProtocol {
+   var myVar: String { get }
+   func doSomething()
+}
+
+struct MyStruct: MyProtocol {
+   var myVar: String {
+      "Hello World!"
+   }
+
+   func doSomething() {
+      print(myVar)
+   }
+}
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Exercice</h3>
+                  <p>
+                     <ul>
+                        <li>Create an array of integers from 1 to 100</li>
+                        <li>Create an array from it containing "foo" when %3, "bar" when %5, "foobar" when %15, nil otherwise </li>
+                        <li>Remove nil values</li>
+                     </ul>
+                  </p>
+               </section>
+               <section>
+                  <h3>Solution</h3>
+                   <pre>
+                     <code class="language-swift">
+Array(1...100).map { element -> String? in
+    [(15, "foobar"), (3, "foo"), (5, "bar")].first(where: { element.isMultiple(of: $0.0) })?.1
+}.compactMap { $0 }
+// OR
+Array(1...100)
+   .compactMap { element -> String? in [(15, "foobar"), (3, "foo"), (5, "bar")].first(where: { element.isMultiple(of: $0.0) })?.1 }
+                     </code>
+                  </pre>
+               </section>
                 <section data-menu-title="Copyright">
                   <p>
-                  	  <b>Source Code:</b> <a href="https://github.com/benjdum59/TutoConstraints.git">Click here</a><br/>
                      <b>Github:</b> benjdum59<br/>
                      <b>Website:</b> benjdum59.github.io<br/>
                      <b>Mail:</b> benjamin.dumont.pro@gmail.com<br/><br/>
