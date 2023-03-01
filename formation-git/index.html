@@ -1,0 +1,749 @@
+   <!DOCTYPE html>
+   <html lang="en">
+      <head>
+         <meta charset="UTF-8">
+         <title>Git tutorial</title>
+         <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+         <link rel="icon" href="../favicon.ico" type="image/x-icon">
+         <link rel="stylesheet" href="../tools/revealjs/dist/reveal.css">
+         <link rel="stylesheet" href="../tools/revealjs/dist/theme/white.css">
+         <link href="../tools/syntaxHighlight/prism.css" rel="stylesheet"/>
+         <script src="../tools/syntaxHighlight/prism.js"></script>
+         <script src="../tools/headjs/head.core.min.js"></script>
+         <script src="../tools/reveal.js-menu/menu.js"></script>
+         <script src="../tools/revealjs/plugin/notes/notes.js"></script>
+      </head>
+      <body>      
+         <style type="text/css">
+            div.footL {
+            bottom: 0%;
+            display: block;
+            position: absolute;
+            right: 1%;
+            z-index: 30;
+            width: 200px;
+            height: 5%;
+            text-align: right;
+            font-size:large;
+            }
+            div.headL {
+            top: 0%;
+            display: block;
+            position: absolute;
+            left: 1%;
+            z-index: 30;
+            width: 60px;
+            height: 60px;
+            text-align: left;
+            font-size:large;
+            }
+            div.headR {
+            top: 0%;
+            display: block;
+            position: absolute;
+            right: 1%;
+            z-index: 30;
+            width: 60px;
+            height: 60px;
+            text-align: right;
+            font-size:large;
+            }
+
+         </style>
+         <div class="reveal">
+            <div class="slides">
+               <section>
+                  <div class="headL">
+                     <img src="../logos/apple/apple-colored.jpeg" style="border-style: none;box-shadow: none;"/>
+                  </div>
+                  <div class="headR">
+                     <img src="../logos/apple/apple-grey.png" style="border-style: none;box-shadow: none;"/>
+                  </div>
+                  <h3>Git tutorial</h3>
+                  <br/>
+                  <h4>Tools: Terminal</h4>
+                  <br/>
+                  <p><small>Press <font color="0000FF">'Space'</font> to continue<br/><br/>
+                     Press <font color="0000FF">'n'</font> to show/hide notes<br/><br/>
+                     Press <font color="0000FF">'s'</font> for speaker mode              
+                     </small>
+                  </p>
+                  <aside class="notes">
+                  </aside>
+                  <div class="footL">
+                     <footnote>Benjamin Dumont</footnote>
+                  </div>
+               </section>
+               <section>
+                  <h3>Introduction</h3>
+                     <ul>
+                        <li>Distributed SCM</li>
+                        <li>Most popular</li>
+                        <li>Designed for merging branches</li>
+                     </ul>
+               </section>
+               <section>
+                  <h3>Schema</h3>
+                  <img src="./img/schema.png">
+               </section>
+               <section>
+                  <h3>Glossary (for local work)</h3>
+                  <p>
+                     <ul>
+                        <li>Working directory: local directory where you work</li>
+                        <li>Index: temporary zone enumerating all changes to save</li>
+                        <li>Commit: change save</li>
+                        <li>HEAD: last commit</li>
+                     </ul>
+                  </p>
+               </section>
+               <section>
+                  <h3>Basic commands</h3>
+                  <div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/FlamboyantLikelyEchidna' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div><p> <a href="https://gfycat.com/flamboyantlikelyechidna">via Gfycat</a></p>
+               </section>
+               <section>
+                  <h3>Init workspace from remote repository</h3>
+                  <p>
+                  <pre>
+                     <code class="language-bash">
+git clone https://repository_url # https
+...
+git clone user@repository_url # ssh
+                     </code>
+                  </pre>
+               </p>
+               </section>
+               <section>
+                  <h3>Adding files to staging</h3>
+                  <pre>
+                     <code class="language-bash">
+git add path/to/file1 path/to/file2
+...
+git add .
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Committing to local repository</h3>
+                  <pre>
+                     <code class="language-bash">
+git commit
+...
+git commit -m "my commit message"
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Identifying a commit</h3>
+                  <p> 
+                     Identified by a sha1 (e.g.: 3241a3db7c76e29b63c0b1ea116b6db0f8619fdc)
+                  </p>
+               </section>
+               <section>
+                  <h3>Exercise</h3>
+                  <p>
+                     <ul>
+                        <li>Clone repository (you should be on develop branch)</li>
+                        <li>Create a file with your username as filename</li>
+                        <li>Commit it</li>
+                        <li>Write the datetime in the file</li>
+                        <li>Commit it</li>
+                     </ul>
+                  </p>
+               </section>
+               <section>
+                  <h3>Sending data to the remote repository</h3>
+                  <pre>
+                     <code class="language-bash">
+git push origin your_branch_name
+                     </code>
+                  </pre>
+               </section>
+               <section>
+               <h3>Getting data from the remote repository</h3>
+                  <pre>
+                     <code class="language-bash">
+git pull origin your_branch_name
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Exercise</h3>
+                  <p>
+                     Push the file previously created on the develop branch
+                  </p>
+               </section>
+               <section>
+                  <h3>Managing branches</h3>
+                  <div style='position:relative; padding-bottom:calc(56.25% + 44px)'>
+                     <iframe src="https://giphy.com/embed/6GoN2XydMRV65YBdp2" frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;pointer-events:none;' allowfullscreen></iframe>
+                  </div>
+               </section>
+               <section>
+                  <h3>Creating branch locally</h3>
+                  <pre>
+                     <code class="language-bash">
+git switch -c new_branch
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Switching branch</h3>
+                  <pre>
+                     <code class="language-bash">
+git checkout branch2 # deprecated
+...
+git switch branch2
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Merging branches</h3>
+                  <pre>
+                     <code class="language-bash">
+git merge branch2 # will merge branch2 into the current branch
+                     </code>
+                  </pre>
+               </section>
+               <section>
+               <h3>Show current branch history</h3>
+                  <pre>
+                     <code class="language-bash">
+git log
+...
+git log --decorate --oneline --graph
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Updating local repository information from remote</h3>
+                  <pre>
+                     <code class="language-bash">
+git fetch
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Conflicts</h3>
+                  <pre>
+                     <code class="language-html">
+<<<<<<< HEAD:index.html
+contact : email.support@github.com
+======
+ please contact us at support@github.com
+>>>>>>> iss53:index.html
+                     </code>
+                  </pre>
+                  <p>You have to solve it manually, then commit the change</p>
+               </section>
+               <section>
+                  <h3>Git flow</h3>
+                  <div style='position:relative; padding-bottom:calc(56.25% + 44px)'>
+                     <iframe src="https://giphy.com/embed/SA6RvPmPJVlJoqYo7U" frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;pointer-events:none;' allowfullscreen></iframe>
+                  </div>
+               </section>
+               <section>
+                  <h3>Common branches</h3>
+                  <ul>
+                     <li>master/main: production</li>
+                     <li>develop: most up to date branch</li>
+                     <li>release: pre-production branch, waiting for tester approval</li>
+                  </ul>
+               </section>
+               <section>
+                  <h3>Personal branches</h3>
+                  <ul>
+                     <li>All other branches</li>
+                     <li>Temporary</li>
+                     <li>Should be deleted when merged</li>
+                  </ul>
+               </section>
+               <section>
+                  <h3>Diagram</h3>
+                  <img src="./img/beautiful-gitflow-workflow-diagram.png"/>
+               </section>
+               <section>
+                  <h3>Undo (local)</h3>
+                  <div style='position:relative; padding-bottom:calc(56.25% + 44px)'>
+                     <iframe src="https://giphy.com/embed/26ybwwiZmci3DJdYs" frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;pointer-events:none;' allowfullscreen></iframe>
+               </section>
+               <section>
+                  <h3>Undo all changes</h3>
+                  <pre>
+                     <code class="language-bash">
+git reset --hard HEAD
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Remove from index</h3>
+                  <pre>
+                     <code class="language-bash">
+git reset
+...
+git reset --mixed
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Restore file from HEAD</h3>
+                  <pre>
+                     <code class="language-bash">
+git checkout myfile.txt # deprecated
+...
+git restore myfile.txt
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Rewrite history</h3>
+                  <p>We will see it the next section</p>
+               </section>
+               <section>
+                  <h3>Save changes into a temporary stack and remove them</h3>
+                  <pre>
+                     <code class="language-bash">
+git stash # Save changes into a temporary stack and remove them
+git stash pop # restore changes from stash
+                     </code>
+                  </pre>               
+               </section>
+               <section>
+                  <h3>Rewrite history</h3>
+                  <div style='position:relative; padding-bottom:calc(56.25% + 44px)'>
+                     <iframe src="https://giphy.com/embed/0DYipdNqJ5n4GYATKL" frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;pointer-events:none;' allowfullscreen></iframe>
+                  </div>
+               </section>
+               <section>
+                  <h3>Warning</h3>
+                  <p>Rewriting history must be done only on personal branches</p>
+               </section>
+               <section>
+                  <h3>Add files from index into the last commit</h3>
+                 <pre>
+                     <code class="language-bash">
+git commit --amend
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Shift history / Context</h3>
+                  <p>
+                     <ol>
+                        <li>I need to work on a new feature</li>
+                        <li>I create a branch "feature" from develop</li>
+                        <li>Someone merged some code into develop</li>
+                        <li>I need the new code on develop for my feature</li>
+                     </ol> 
+                  </p>
+               </section>
+               <section>
+                  <h3>Shift history / Actions</h3>
+                  <p>
+                     <ul>
+                        <li>Merge action: will create a merged commit into my feature branch</li>
+                        <li>Rebase action: will put all the new commits from develop before commits on personal branch</li>
+                     </ul> 
+                  </p>
+               </section>
+               <section>
+                  <h3>Shift history / Rebase</h3>
+                  <p>
+                  <pre>
+                     <code class="language-bash">
+git rebase develop
+                     </code>
+                  </pre>
+                  </p>
+               </section>
+               <section>
+                  <h3>Shift history / Rebase with conflicts</h3>
+                  <p> Solve conflicts, then :
+                  <pre>
+                     <code class="language-bash">
+git add my-file-with-conflicts-resolved.txt
+git rebase --continue
+                     </code>
+                  </pre>
+                  </p>
+               </section>
+               <section>
+                  <h3>Merge vs Rebase 1/2</h3>
+                  <p>
+                     Merge is easier to use to deal with conflicts, since we treal all of them inside the same commit, contraty to rebase. Rebase will apply each commit, so you may need to solve conflicts for each commit.
+                  </p>
+               </section>
+               <section>
+                  <h3>Merge vs Rebase 2/2</h3>
+                  <p>
+                     Merge will create a merged commit. It makes some sense when you want to put your code into develop. It makes no sense when you want to update your personal branch from develop
+                  </p>
+               </section>
+               <section>
+                  <h3>Merge vs Rebase Summary</h3>
+                  <p>
+                     <ul>
+                        <li>Merge: destination branch is a common branch</li>
+                        <li>Rebase: destination branch is a personal branch</li>
+                     </ul>
+                  </p>
+               </section>
+               <section>
+                  <h3>Interactiv Rebase 1/4</h3>
+                  <p>
+                     On your personal branch, you may want to:
+                     <ul>
+                        <li>Change a commit message</li>
+                        <li>Remove a commit</li>
+                        <li>Merge some commits into only one commit</li>
+                        <li>Reorder commits</li>
+                     </ul>
+                  </p>
+               </section>
+               <section>
+                  <h3>Interactiv Rebase 2/4</h3>
+                  <p>
+                     Identify the start commit from which you want to rewrite history
+                  </p>
+                  <pre>
+                     <code class="language-bash">
+git log
+# Identify the sha1 (excluded)
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Interactiv Rebase 3/4</h3>
+                  <pre>
+                     <code class="language-bash">
+git rebase -i my_sha1
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Interactiv Rebase 4/4</h3>
+                  <pre>
+                     <code class="language-bash">
+pick b6c57be commit message 1
+pick 53c836a commit message 2
+pick e2130ac commit message 3
+
+# Rebase 4d32053..e2130ac onto 4d32053 (3 commands)
+#
+# Commands:
+# p, pick  = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like "squash" but keep only the previous
+#                    commit's log message, unless -C is used, in which case
+#                    keep only this commit's message; -c is same as -C but
+#                    opens the editor
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Pull requests</h3>
+                  <div style='position:relative; padding-bottom:calc(56.25% + 44px)'>
+                     <iframe src="https://giphy.com/embed/du3J3cXyzhj75IOgvA" frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;pointer-events:none;' allowfullscreen></iframe>
+                  </div>
+               </section>
+               <section>
+                  <h3>Aim</h3>
+                  <p>
+                     <ul>
+                        <li>Show your code to other developers</li>
+                        <li>Request for reviews</li>
+                        <li>Request for changes</li>
+                        <li>Merge your personal branch to a reference one</li>
+                     </ul>
+                  </p>
+               </section>
+               <section>
+                  <h3>Aim (advanced)</h3>
+                  <p>
+                     <ul>
+                        <li>Run tests</li>
+                        <li>Detect code coverage</li>
+                        <li>Generate documentation</li>
+                        <li>Define breaker rules for merging</li>
+                        <li>...</li>
+                     </ul>
+                  </p>
+               </section>
+               <section>
+                  <h3>Create a pull request</h3>
+                  <img src="./img/pullrequest1.png"></img>
+               </section>
+               <section>
+                  <h3>Select the branches (from, to)</h3>
+                  <img src="./img/pullrequest2.png"></img>
+               </section>
+               <section>
+                  <h3>PR informations</h3>
+                  <img src="./img/pullrequest3.png"></img>
+               </section>
+               <section>
+                  <h3>Comment</h3>
+                  <img src="./img/pullrequest4.png"></img>
+               </section>
+               <section>
+                  <h3>Review</h3>
+                  <img src="./img/pullrequest5.png"></img>
+               </section>
+               <section>
+                  <h3>Merge</h3>
+                  <img src="./img/pullrequest6.png" style="height: 500px;"></img>
+               </section>
+               <section>
+                  <h3>Best practice</h3>
+                     <div style='position:relative; padding-bottom:calc(56.25% + 44px)'>
+                        <iframe src="https://giphy.com/embed/ZxEMJcE2BMuC9d0h9Y"  frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;pointer-events:none;' allowfullscreen>
+                        </iframe>
+                     </div>
+               </section>
+               <section>
+                  <h3>Commit message</h3>
+                  <p>
+                     Normalize your message commit (use a reference or create a new one for all developers)
+                     <br/>                     
+                  </p>
+                  <a href="https://gist.github.com/brianclements/841ea7bffdb01346392c">Angular Reference</a>
+               </section>
+               <section>
+                  <h3>Avoid merge</h3>
+                  <p>
+                     Avoid manual merge. Use Pull Request for merging.                 
+                  </p>
+               </section>
+               <section>
+                  <h3>Forbid Push on Reference Branch</h3>
+                  <p>
+                     You must not be able to push directly into develop/main/master/release branch. Use a Pull request instead.                 
+                  </p>
+               </section>
+               <section>
+                  <h3>Avoid ByPassing a Pull Request</h3>
+                  <p>
+                     Use pull request to show your code and wait for reviewers or comments before merging.                 
+                  </p>
+               </section>
+               <section>
+                  <h3>Personal branches</h3>
+                  <p>
+                     Only work on your personal branches. Your personal branches must not be based on otherone personal branch.                
+                  </p>
+               </section>
+               <section>
+                  <h3>Parallel reference branches</h3>
+                  <p>
+                     Avoid parallel reference branches. You should only have at a time:
+                     <ul>
+                        <li>develop</li>
+                        <li>main/master</li>
+                        <li>ONLY ONE release</li>
+                     </ul>             
+                  </p>
+               </section>
+               <section>
+                  <h3>Other stuff</h3>
+                  <div style='position:relative; padding-bottom:calc(56.25% + 44px)'>
+                     <iframe src="https://giphy.com/embed/3o6nVb7p7hIuc2moda"  frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;pointer-events:none;' allowfullscreen></iframe>
+                  </div>
+               </section>
+               <section>
+                  <h3>Ignore some files</h3>
+                  <p>You can ignore some files by using a .gitignore file in root folder or sub folders</p>
+                  <pre>
+                     <code class="language-bash">
+## Example
+*.ipa
+*.dSYM.zip
+*.dSYM                     </code>
+                  </pre>
+                  <p>You can generate .gitignore file using gitignore.io</p>
+               </section>
+               <section>
+                  <h3>Graphical clients</h3>
+                  <ul>
+                     <li>SourceTree</li>
+                     <li>GitKraken</li>
+                  </ul>
+               </section>
+               <section>
+                  <h3>Graphical client (terminal)</h3>
+                  <p>
+                     oh-my-zsh (can be installed with homebrew)
+                  </p>
+               </section>
+               <section>
+                  <h3>Protocol</h3>
+                  <h4>To tell an entity its conformance</h4>
+                  <pre>
+                     <code class="language-swift">
+protocol MyProtocol {
+   var myVar: String { get }
+   func doSomething()
+}
+
+struct MyStruct: MyProtocol {
+   var myVar: String {
+      "Hello World!"
+   }
+
+   func doSomething() {
+      print(myVar)
+   }
+}
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Exercice</h3>
+                  <p>
+                     <ul>
+                        <li>Create an array of integers from 1 to 100</li>
+                        <li>Create an array from it containing "foo" when %3, "bar" when %5, "foobar" when %15, nil otherwise </li>
+                        <li>Remove nil values</li>
+                     </ul>
+                  </p>
+               </section>
+               <section>
+                  <h3>Solution</h3>
+                   <pre>
+                     <code class="language-swift">
+Array(1...100).map { element -> String? in
+    [(15, "foobar"), (3, "foo"), (5, "bar")].first(where: { element.isMultiple(of: $0.0) })?.1
+}.compactMap { $0 }
+// OR
+Array(1...100)
+   .compactMap { element -> String? in [(15, "foobar"), (3, "foo"), (5, "bar")].first(where: { element.isMultiple(of: $0.0) })?.1 }
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Asynchonous code with delegate pattern</h3>
+                   <pre>
+                     <code class="language-swift">
+protocol DoSomething: AnyObject {
+    func printSomething(_ string: String)
+}
+
+class Parent: DoSomething {
+    func printSomething(_ str: String) {
+        print(str)
+    }
+    func onClick() {
+        Child(delegate: self).doSomething()
+    }
+}
+
+class Child {
+    weak private var delegate: DoSomething?
+    init(delegate: DoSomething) {
+        self.delegate = delegate
+    }
+    func doSomething() {
+        delegate?.printSomething("Hello World!")
+    }
+}
+
+Parent().onClick()
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Asynchonous code with closure</h3>
+                   <pre>
+                     <code class="language-swift">
+class Parent {
+    
+    func printSomething(_ str: String) {
+        print(str)
+    }
+    func onClick() {
+        Child { [weak self] string in
+            self?.printSomething(string)
+        }.doSomething()
+    }
+}
+
+class Child {
+    
+    private var completion: (String) -> Void
+    
+    init(completion: @escaping (String) -> Void) {
+        self.completion = completion
+    }
+    func doSomething() {
+        completion("HelloWorld")
+    }
+}
+Parent().onClick()
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Asynchonous code with Reactiv Programming</h3>
+                  <p>
+                     <ul>
+                        <li>RxSwift (external library)</li>
+                        <li>Combine (native, iOS 13 minimum)</li>
+                     </ul>
+                  </p>
+               </section>
+               <section>
+                  <h3>Asynchonous code async/await</h3>
+                  <p>Since Swift 5.5</p>
+                  <pre>
+                     <code class="language-swift">
+func fetchImages() async throws -> [UIImage] {
+  // .. perform data request
+}
+...
+let result = try await fetchImages()
+                     </code>
+                  </pre>
+               </section>
+                <section data-menu-title="Copyright">
+                  <p>
+                     <b>Github:</b> benjdum59<br/>
+                     <b>Website:</b> benjdum59.github.io<br/>
+                     <b>Mail:</b> benjamin.dumont.pro@gmail.com<br/><br/>
+                     <a href="../index.html">Go to Homepage</a>
+                  </p>
+               </section>
+            </div>
+         </div>
+         <script src="../tools/revealjs/dist/reveal.js"></script>
+         <script>
+            var showNotes = false;
+               Reveal.initialize({
+               	dependencies: [
+               		// Speaker notes
+               		{ src: '../tools/revealjs/plugin/notes/notes.js', async: true },
+               		{ src: '../tools/reveal.js-menu/menu.js' }
+               	], 
+                  plugins: [ RevealMenu, RevealNotes ],
+               });
+               Reveal.configure({ 
+               	slideNumber: true, 
+               	showSlideNumber: 'speaker',
+               	keyboard: {
+               		78: function() { 
+               		showNotes = !showNotes;
+               		Reveal.configure(
+               			{ 
+               				showNotes: showNotes
+               			}
+               		)} ,
+               		72: function() { Reveal.configure(
+               			{ 
+               				showNotes: false
+               			}
+               		)} 
+               	} 
+               });
+         </script>
+      </body>
+   </html>
