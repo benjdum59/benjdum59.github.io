@@ -294,11 +294,7 @@ contact : email.support@github.com
                   </ul>
                </section>
                <section>
-                  <h3>Diagram</h3>
-                  <img src="./img/beautiful-gitflow-workflow-diagram.png"/>
-               </section>
-               <section>
-                  <h3>Diagram</h3>
+                  <h3>Flowchart</h3>
                      <div class="mermaid">
                      %%{
                         init: { 
@@ -624,6 +620,54 @@ pick e2130ac commit message 3
                   </pre>
                </section>
                <section>
+                  <h3>Push a rewritten history</h3>
+                  <div class="mermaid">
+                     %%{
+                        init: { 
+                           'theme': 'base',
+                           'themeVariables': {
+                              'commitLabelColor': '#ff0000',
+                              'commitLabelFontSize': '16px',
+                              'commitLabelFontSize': '30px'
+                           },
+                           'gitGraph': {
+                              'showBranches': true, 
+                              'showCommitLabel':true,
+                              'mainBranchName': 'develop'
+                           }
+                        } 
+                     }%%    
+                     gitGraph
+                        commit id: "A"
+                        commit id: "B"
+                        commit id: "C"
+                        commit id: "D"
+                        commit id: "E"
+                        branch my_feature
+                        commit id: "F'"
+                        commit id: "G'"
+                  </div>
+                  <pre>
+                     <code class="language-bash">
+# If remote doen't have F and G
+git push origin personal_branch
+# Else, push force
+git push -f origin personal_branch
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Exercise</h3>
+                  <p>
+                     <ol>
+                        <li><b>On your personnal branch</b>, create 3 commits (change the data in the file)</li>
+                        <li>Push it</li>
+                        <li>Change the commit message of your 1rst commit, merge the 2nd and 3rd commits</li>
+                        <li>Push</li>
+                     </ol>
+                  </p>
+               </section>
+               <section>
                   <h3>Pull requests</h3>
                   <div style='position:relative; padding-bottom:calc(56.25% + 44px)'>
                      <iframe src="https://giphy.com/embed/du3J3cXyzhj75IOgvA" frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;pointer-events:none;' allowfullscreen></iframe>
@@ -741,6 +785,12 @@ pick e2130ac commit message 3
                   </p>
                </section>
                <section>
+                  <h3>Rewritting history</h3>
+                  <p>
+                     When you rewrite the history, force push as soon as possible to avoid an error telling you to pull the repository (which will lead to unexpected commits)            
+                  </p>
+               </section>
+               <section>
                   <h3>Other stuff</h3>
                   <div style='position:relative; padding-bottom:calc(56.25% + 44px)'>
                      <iframe src="https://giphy.com/embed/3o6nVb7p7hIuc2moda"  frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;pointer-events:none;' allowfullscreen></iframe>
@@ -756,7 +806,7 @@ pick e2130ac commit message 3
 *.dSYM.zip
 *.dSYM                     </code>
                   </pre>
-                  <p>You can generate .gitignore file using gitignore.io</p>
+                  <p>You can generate .gitignore file using <a href="https://www.toptal.com/developers/gitignore/">gitignore.io</a></p>
                </section>
                <section>
                   <h3>Graphical clients</h3>
