@@ -9,9 +9,12 @@
          <link rel="stylesheet" href="../tools/revealjs/dist/theme/white.css">
          <link href="../tools/syntaxHighlight/prism.css" rel="stylesheet"/>
          <script src="../tools/syntaxHighlight/prism.js"></script>
-         <script src="../tools/headjs/head.core.min.js"></script>
          <script src="../tools/reveal.js-menu/menu.js"></script>
          <script src="../tools/revealjs/plugin/notes/notes.js"></script>
+         <script type="module">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.0.1/dist/mermaid.esm.min.mjs';
+            mermaid.initialize({ startOnLoad: true });
+         </script>
       </head>
       <body>      
          <style type="text/css">
@@ -50,6 +53,9 @@
             }
 
          </style>
+         <style>
+   .mermaid {height:200% !important}
+</style>
          <div class="reveal">
             <div class="slides">
                <section>
@@ -347,6 +353,63 @@ git commit --amend
                   </p>
                </section>
                <section>
+                  <h3>Rebase Flowchart</h3>
+                  <div class="mermaid">
+                     %%{
+                        init: { 
+                           'theme': 'base',
+                           'themeVariables': {
+                              'commitLabelColor': '#ff0000',
+                              'commitLabelBackground': '#00ff00',
+                              'commitLabelFontSize': '30px'
+                           },
+                           'gitGraph': {
+                           'showBranches': true, 
+                           'showCommitLabel':true,
+                           'mainBranchName': 'develop'
+                           }
+                        } 
+                     }%%
+                     gitGraph
+                        commit id: "A"
+                        commit id: "B"
+                        commit id: "C"
+                        branch my_feature
+                        commit id: "F"
+                        commit id: "G"
+                        checkout develop
+                        commit id: "D"
+                        commit id: "E"
+                  </div>
+                  <br/>
+                  <div class="mermaid">
+                     %%{
+                        init: { 
+                           'theme': 'base',
+                           'themeVariables': {
+                              'commitLabelColor': '#ff0000',
+                              'commitLabelFontSize': '16px',
+                              'commitLabelFontSize': '30px'
+                           },
+                           'gitGraph': {
+                              'showBranches': true, 
+                              'showCommitLabel':true,
+                              'mainBranchName': 'develop'
+                           }
+                        } 
+                     }%%    
+                     gitGraph
+                        commit id: "A"
+                        commit id: "B"
+                        commit id: "C"
+                        commit id: "D"
+                        commit id: "E"
+                        branch my_feature
+                        commit id: "F'"
+                        commit id: "G'"
+                  </div>
+               </section>
+               <section>
                   <h3>Shift history / Rebase</h3>
                   <p>
                   <pre>
@@ -601,6 +664,7 @@ pick e2130ac commit message 3
             </div>
          </div>
          <script src="../tools/revealjs/dist/reveal.js"></script>
+         <!--script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@1.1.0/plugin/mermaid/mermaid.js"></script-->
          <script>
             var showNotes = false;
                Reveal.initialize({
@@ -614,6 +678,7 @@ pick e2130ac commit message 3
                Reveal.configure({ 
                	slideNumber: true, 
                	showSlideNumber: 'speaker',
+                  viewDistance: 11115,
                	keyboard: {
                		78: function() { 
                		showNotes = !showNotes;
