@@ -212,6 +212,35 @@ git merge branch2 # will merge branch2 into the current branch
                   </pre>
                </section>
                <section>
+                  <h3>Merging flowchart</h3>
+                     <div class="mermaid">
+                     %%{
+                        init: { 
+                           'theme': 'base',
+                           'themeVariables': {
+                              'commitLabelColor': '#ff0000',
+                              'commitLabelBackground': '#00ff00',
+                              'commitLabelFontSize': '30px'
+                           },
+                           'gitGraph': {
+                           'showBranches': true, 
+                           'showCommitLabel':true,
+                           'mainBranchName': 'develop'
+                           }
+                        } 
+                     }%%
+                     gitGraph
+                        commit id: "A"
+                        commit id: "B"
+                        branch my_feature
+                        commit id: "Alpha"
+                        commit id: "Beta"
+                        checkout develop
+                        commit id: "C"
+                        merge my_feature
+                  </div>
+               </section>
+               <section>
                <h3>Show current branch history</h3>
                   <pre>
                      <code class="language-bash">
@@ -267,6 +296,95 @@ contact : email.support@github.com
                <section>
                   <h3>Diagram</h3>
                   <img src="./img/beautiful-gitflow-workflow-diagram.png"/>
+               </section>
+               <section>
+                  <h3>Diagram</h3>
+                     <div class="mermaid">
+                     %%{
+                        init: { 
+                           'logLevel': 'debug',
+                           'theme': 'base',
+                           'gitGraph': {
+                           'showBranches': true, 
+                           'showCommitLabel':false,
+                           'mainBranchName': 'main'
+                           }
+                        } 
+                     }%%
+                     gitGraph
+                        commit tag: "1.0.0"
+                        branch hotfix order: 1
+                        branch develop order: 3
+                        checkout develop
+                        commit
+                        branch my_feature order: 4
+                        commit
+                        commit
+                        checkout hotfix
+                        commit
+                        checkout main
+                        merge hotfix  tag:"1.0.1"
+                        checkout develop
+                        merge hotfix
+                        checkout develop
+                        merge my_feature
+                        branch release/1.1.0 order: 2
+                        commit
+                        commit
+                        checkout main
+                        merge release/1.1.0 tag: "1.1.0"
+                        checkout develop
+                        merge release/1.1.0
+
+
+                  </div>               
+               </section>
+               <section>
+                  <h3>Tag</h3>
+                  <p>
+                     <ul>
+                        <li>Identifies a commit by a version (X.Y.Z)</li>
+                        <li>MUST be on a reference branch</li>
+                        <li>Should be on main/master</li>
+                     </ul>
+                  </p>
+               </section>
+               <section>
+                  <h3>Tag flowchart</h3>
+                     <div class="mermaid">
+                     %%{
+                        init: { 
+                           'theme': 'base',
+                           'themeVariables': {
+                              'commitLabelColor': '#ff0000',
+                              'commitLabelBackground': '#00ff00',
+                              'commitLabelFontSize': '30px'
+                           },
+                           'gitGraph': {
+                           'showBranches': true, 
+                           'showCommitLabel':true,
+                           'mainBranchName': 'main'
+                           }
+                        } 
+                     }%%
+                     gitGraph
+                        commit id: "Initial"
+                        branch develop
+                        commit id: "A"
+                        branch my_feature
+                        commit id: "B"
+                        commit id: "C"
+                        checkout develop
+                        merge my_feature
+                        checkout main
+                        merge develop tag: "1.0.0"
+
+                  </div>
+                  <pre>
+                     <code class="language-bash">
+git tag -a 1.0.0 -m "my comment"
+                     </code>
+                  </pre>
                </section>
                <section>
                   <h3>Undo (local)</h3>
@@ -677,7 +795,7 @@ pick e2130ac commit message 3
                });
                Reveal.configure({ 
                	slideNumber: true, 
-               	showSlideNumber: 'speaker',
+               	// showSlideNumber: 'speaker',
                   viewDistance: 11115,
                	keyboard: {
                		78: function() { 
