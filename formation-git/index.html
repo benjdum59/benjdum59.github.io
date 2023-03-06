@@ -791,7 +791,7 @@ git push -f origin personal_branch
                <section>
                   <h3>Other stuff</h3>
                   <div style='position:relative; padding-bottom:calc(56.25% + 44px)'>
-                     <iframe src="https://giphy.com/embed/3o6nVb7p7hIuc2moda"  frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;pointer-events:none;' allowfullscreen></iframe>
+                     <iframe src="https://giphy.com/embed/3o6nVb7p7hIuc2moda" frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;pointer-events:none;' allowfullscreen></iframe>
                   </div>
                </section>
                <section>
@@ -817,6 +817,64 @@ git push -f origin personal_branch
                   <h3>Graphical client (terminal)</h3>
                   <p>
                      oh-my-zsh (can be installed with homebrew)
+                  </p>
+               </section>
+               <section>
+                  <h3>Git and IT projects</h3>
+                  <div style='position:relative; padding-bottom:calc(56.25% + 44px)'>
+                     <iframe src="https://giphy.com/embed/lqFk1So5cysA7Bc1fb" frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;pointer-events:none;' allowfullscreen></iframe>
+                  </div>
+               </section>
+               <section>
+                  <h3>Kanban</h3>
+                  <img src="./img/kanban1.png"></img>
+               </section>
+               <section>
+                  <h3>Backlog</h3>
+                  <p>
+                     To do list. Must be filled with the PO/BA, Tester and developer during the example mapping to move to "In Progress" status
+                     <br/>
+                     <br/>
+                     <b>Lifetime:</b> from minutes to eternity
+                  </p>
+               </section>
+               <section>
+                  <h3>In progress</h3>
+                  <p>Developer create a branch (e.g.: feature/3 where 3 is the ID of the ticket). He develops the content of the ticket and create a pull request. Merging PR will change the status to "Done"</p>
+                  <br/>
+                  <br/>
+                  <b>Lifetime:</b> from minutes to days
+               </section>
+               <section>
+                  <h3>Done</h3>
+                  <p>Code is merged. Tester can test it (on pair testing or on a staging environment if code has been deployed)</p>
+                  <br/>
+                  <br/>
+                  <b>Lifetime:</b> from minutes to hours on pair testing, from hours to weeks on staging environment
+               </section>
+               <section>
+                  <h3>Tested</h3>
+                  <p>Code is tested. The ticket is waiting for deploying a released version</p>
+                  <br/>
+                  <br/>
+                  <b>Lifetime:</b> weeks
+               </section>
+               <section>
+                  <h3>Delivered</h3>
+                  <p>Released on production or pre-production</p>
+                  <br/>
+                  <br/>
+                  <b>Lifetime:</b> eternity
+               </section>
+               <section>
+                  <h3>Concerning Git</h3>
+                  <p>
+                     <ul>
+                        <li>Used in the development phase (personal branches) and delivery phase (develop branch for staging, release branch for pre-delivery and master/main branch for delivery)</li>
+                        <li>Personal branches should have the shortest lifetime possible</li>
+                        <li>When merged, personal branches should be deleted (at least on remote)</li>
+                        <li>For lifetime reason, tickets may have to be splitted</li>
+                     </ul>
                   </p>
                </section>
                 <section data-menu-title="Copyright">
