@@ -60,10 +60,15 @@
             text-align: right;
             font-size:large;
             }
-
          </style>
-         <style>
+<style>
    .mermaid {height:200% !important}
+</style>
+<style>
+   #qrcode {
+      display: flex;
+      justify-content: center;
+   }
 </style>
          <div class="reveal">
             <div class="slides">
@@ -299,7 +304,7 @@ dynamicTypeSize.isAccessibilitySize // true starting accessibility medium
                   <h3>Screen reader</h3>
                   <p>
                      Accessibility Trait: <br/>
-                     You may need to add traits on elemensts, for instance on clickable image to be considered as a button.
+                     You may need to add traits on elements, for instance on clickable image to be considered as a button.
                      These are the more common traits to use:
                      <ul>
                         <li>button</li>
@@ -313,6 +318,11 @@ dynamicTypeSize.isAccessibilitySize // true starting accessibility medium
                      </code>
                   </pre>
                </section>
+               <section>
+                  <h3>Link</h3>
+                  <div id="qrcode"></div>
+                  <img src="../assets/images/link.png"/>
+               </section>
                 <!-- section data-menu-title="Copyright">
                   <p>
                      <b>Github:</b> benjdum59<br/>
@@ -325,6 +335,10 @@ dynamicTypeSize.isAccessibilitySize // true starting accessibility medium
          </div>
          <script src="../tools/revealjs/dist/reveal.js"></script>
          <!--script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@1.1.0/plugin/mermaid/mermaid.js"></script-->
+         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+         <script type="text/javascript">
+            new QRCode(document.getElementById("qrcode"), "https://benjdum59.github.io/a11y/index.html");
+         </script>
          <script>
             var showNotes = false;
                Reveal.initialize({
