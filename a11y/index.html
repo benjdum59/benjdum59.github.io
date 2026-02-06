@@ -1,0 +1,266 @@
+   <!DOCTYPE html>
+   <html lang="en">
+      <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FP2VJJNWFB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FP2VJJNWFB');
+</script>
+         <meta charset="UTF-8">
+         <title>A11y introduction</title>
+         <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+         <link rel="icon" href="../favicon.ico" type="image/x-icon">
+         <link rel="stylesheet" href="../tools/revealjs/dist/reveal.css">
+         <link rel="stylesheet" href="../tools/revealjs/dist/theme/white.css">
+         <link href="../tools/syntaxHighlight/prism.css" rel="stylesheet"/>
+         <script src="../tools/syntaxHighlight/prism.js"></script>
+         <script src="../tools/reveal.js-menu/menu.js"></script>
+         <script src="../tools/revealjs/plugin/notes/notes.js"></script>
+         <script type="module">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.0.1/dist/mermaid.esm.min.mjs';
+            mermaid.initialize({ startOnLoad: true });
+         </script>
+      </head>
+      <body>      
+         <style type="text/css">
+            div.footL {
+            bottom: 0%;
+            display: block;
+            position: absolute;
+            right: 1%;
+            z-index: 30;
+            width: 200px;
+            height: 5%;
+            text-align: right;
+            font-size:large;
+            }
+            div.headL {
+            top: 0%;
+            display: block;
+            position: absolute;
+            left: 1%;
+            z-index: 30;
+            width: 60px;
+            height: 60px;
+            text-align: left;
+            font-size:large;
+            }
+            div.headR {
+            top: 0%;
+            display: block;
+            position: absolute;
+            right: 1%;
+            z-index: 30;
+            width: 60px;
+            height: 60px;
+            text-align: right;
+            font-size:large;
+            }
+
+         </style>
+         <style>
+   .mermaid {height:200% !important}
+</style>
+         <div class="reveal">
+            <div class="slides">
+               <section>
+                  <div class="headL">
+                     <!--img src="./img/git.png" style="border-style: none;box-shadow: none;"/-->
+                     <svg class="icon-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="-3627 353 1024 1024" style="enable-background:new -3627 353 1024 1024;" xml:space="preserve">
+  <path d="M-3116.4 353c-282 0-510.6 228.6-510.6 510.6s228.6 510.6 510.6 510.6s510.6-228.6 510.6-510.6S-2834.4 353-3116.4 353z M-3124.1 454.4c36.6 0 66.2 29.6 66.2 65.9c0 36.6-29.6 66.2-66.2 66.2c-36.3 0-65.9-29.6-65.9-66.2 C-3190.1 484-3160.5 454.4-3124.1 454.4L-3124.1 454.4z M-2838 667.7l-196.4 24.8l0.1 196.6l95.2 317.7c5 20.1-7 40.1-26.9 45.1 c-19.8 5-40.1-6-45.1-26l-97.5-289.2h-30l-89.7 295.2c-7.5 19.3-29 28.1-48.2 20.6c-19.1-7.4-30.7-29.1-23.2-48.4l82.4-311.8V692.5 l-181-24.6c-18.6-1.5-31.2-17.8-29.7-36.4c1.4-18.7 18.3-32.6 36.8-31.1l219.9 18.9h96.4l234.1-19.3c18.6-0.7 34.4 13.7 35 32.5 C-2805 651-2819.4 666.9-2838 667.7L-2838 667.7z"/>
+</svg>
+                  </div>
+                  <div class="headR">
+                     <img src="../logos/apple/apple-grey.png" style="border-style: none;box-shadow: none;"/>
+                  </div>
+                  <br/>
+                  <h3>A11y introduction</h3>
+                  <br/>
+                  <p><small>Press <font color="0000FF">'Space'</font> to continue<br/><br/>
+                     Press <font color="0000FF">'n'</font> to show/hide notes<br/><br/>
+                     Press <font color="0000FF">'s'</font> for speaker mode              
+                     </small>
+                  </p>
+                  <aside class="notes">
+                  </aside>
+                  <div class="footL">
+                     <footnote>Benjamin Dumont</footnote>
+                  </div>
+               </section>
+               <section>
+                  <h3>Introduction</h3>
+                  <p>
+                     <h4>Different kind of accessibility</h4>
+                     <ul>
+                        <li>Font</li>
+                        <li>Color / contrast</li>
+                        <li>Screen reader (aka Voice Over on iOS)</li>
+                     </ul>
+                  </pp>
+               </section>
+               <section>
+                  <h3>Different level of accessibility</h3>
+                  <p><small>Large(default) / XXXL / Accessibility Medium / Accessibility XXXL</small></p>
+                  <img src="./img/font-level/large.png" width="200px" height="200px"></img>
+                  <img src="./img/font-level/xxxl.png" width="200px" height="200px"></img>
+                  <img src="./img/font-level/accessibilityMedium.png" width="200px" height="200px"></img>
+                  <img src="./img/font-level/accessibilityXxxl.png" width="200px" height="200px"></img>
+
+                  <aside class="notes">
+                     When the dynamic type contains "accessibility", it is for persons considered as disabled person. Otherwise, it is more for confort or a person with visual impairment
+                  </aside>
+               </section>
+               <section>
+                  <h3>Font size and dynamic type</h3>
+                  <p>Scaled font based on text style
+                  <pre>
+                     <code class="language-swift">
+public extension UIFont {
+  static let title = UIFont.preferredFont(for: .title1)
+
+  static func preferredFont(for style: TextStyle) -> UIFont {
+    let metrics = UIFontMetrics(forTextStyle: style)
+    let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: style)
+    let font = UIFont(descriptor: fontDescriptor, size: pointSize)
+    return metrics.scaledFont(for: font)
+  }
+}
+                     </code>
+                  </pre>
+               </p>
+               </section>
+               <section>
+                  <h3>Font size and dynamic type</h3>
+                  <p>Mapping between SwiftUI and UIKit
+                  <pre>
+                     <code class="language-swift">
+private extension Font.Weight {
+  init(uiFontWeight: UIFont.Weight) {
+     switch uiFontWeight {
+     case .ultraLight: self = .ultraLight
+     case .thin: self = .thin
+     ...
+     default: self = .regular
+     }
+  }
+}
+
+private extension Font.TextStyle {
+  init(uiTextStyle: UIFont.TextStyle) {
+     switch uiTextStyle {
+     case .largeTitle: self = .largeTitle
+     case .title1: self = .title
+     ...
+     default: self = .body
+     }
+  }
+}
+                     </code>
+                  </pre>
+               </p>
+               </section>
+               <section>
+                  <h3>Font size and frames</h3>
+                  <p>
+                     <ul>
+                        <li>Prevent strong hardcoded frames:
+                           <ul>
+                           <li>Use of minHeight / minWidth instead of height and width</li>
+                           <li>Use of automaticDimension for UITableView</li>
+                           </ul>
+                        </li>
+                        <li>Ask if decorativ element needs to be shown for each accessibility</li>
+                        <li>Scale your metrics</li>
+                     </ul>
+
+               </p>
+               </section>
+               <section>
+                  <h3>Font size and frames</h3>
+                  <p>Detect accessibility mode</p>
+                  <pre>
+                     <code class="language-swift">
+@Environment(\.dynamicTypeSize) var dynamicTypeSize
+...
+dynamicTypeSize.isAccessibilitySize // true starting accessibility medium
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Font size and frames</h3>
+                  <p>Scaled metrics</p>
+                  <pre>
+                     <code class="language-swift">
+  @ScaledMetric private var cellHeight: CGFloat = 42
+                     </code>
+                  </pre>
+               </section>
+               <section>
+                  <h3>Font size</h3>
+                  <p>Tool: Rocket Sim</p>
+<video width="640" height="360" controls>
+  <source src="./video/font-rocketsim.mp4" type="video/mp4">
+  Your browser does not support video playing
+</video>
+               </section>
+               <section>
+                  <h3>Color / contrast</h3>
+                  <p>
+                     Contrast ratio should be over 4.5<br/>
+                     We can use the <a href="https://apps.apple.com/lk/app/accessibility-checker-ai-eaa/id1095478187">Accessibility Checker tool</a>
+                  </p>
+                  <img src="./img/colorcontrast-tool.png"/>
+               </section>
+                <section data-menu-title="Copyright">
+                  <p>
+                     <b>Github:</b> benjdum59<br/>
+                     <b>Website:</b> benjdum59.github.io<br/>
+                     <b>Mail:</b> benjamin.dumont.pro@gmail.com<br/><br/>
+                     <a href="../index.html">Go to Homepage</a>
+                  </p>
+               </section>
+            </div>
+         </div>
+         <script src="../tools/revealjs/dist/reveal.js"></script>
+         <!--script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@1.1.0/plugin/mermaid/mermaid.js"></script-->
+         <script>
+            var showNotes = false;
+               Reveal.initialize({
+               	dependencies: [
+               		// Speaker notes
+               		{ src: '../tools/revealjs/plugin/notes/notes.js', async: true },
+               		{ src: '../tools/reveal.js-menu/menu.js' }
+               	], 
+                  plugins: [ RevealMenu, RevealNotes ],
+               });
+               Reveal.configure({ 
+               	slideNumber: true, 
+               	// showSlideNumber: 'speaker',
+                  viewDistance: 100,
+                  mobileViewDistance: 100,
+                  hideInactiveCursor: true,
+                  hashOneBasedIndex: true,
+                  hash: true,
+                  hideCursorTime: 2000,
+               	keyboard: {
+               		78: function() { 
+               		showNotes = !showNotes;
+               		Reveal.configure(
+               			{ 
+               				showNotes: showNotes
+               			}
+               		)} ,
+               		72: function() { Reveal.configure(
+               			{ 
+               				showNotes: false
+               			}
+               		)} 
+               	} 
+               });
+         </script>
+      </body>
+   </html>
