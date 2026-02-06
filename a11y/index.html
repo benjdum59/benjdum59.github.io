@@ -115,7 +115,7 @@
                   </aside>
                </section>
                <section>
-                  <h3>Font size and dynamic type</h3>
+                  <h3>Font size and dynamic type (UIKit)</h3>
                   <p>Scaled font based on text style
                   <pre>
                      <code class="language-swift">
@@ -127,6 +127,47 @@ public extension UIFont {
     let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: style)
     let font = UIFont(descriptor: fontDescriptor, size: pointSize)
     return metrics.scaledFont(for: font)
+  }
+}
+                     </code>
+                  </pre>
+               </p>
+               </section>
+               <section>
+                  <h3>Font size and dynamic type (SwiftUI)</h3>
+                  <p>Scaled font based on text style
+                  <pre>
+                     <code class="language-swift">
+public extension Font {
+  static let title1 = UIFont.title.scalableFont(relativeTo: .title1)
+}
+private extension UIFont {
+  func scalableFont(relativeTo: TextStyle) -> Font {
+      Font.system(Font.TextStyle(uiTextStyle: relativeTo))
+  }
+}
+                     </code>
+                  </pre>
+               </p>
+               </section>
+               <section>
+                  <h3>Font size and dynamic type (SwiftUI)</h3>
+                  <p>Using custom font
+                  <pre>
+                     <code class="language-swift">
+private extension UIFont {
+  func scalableFont(relativeTo: TextStyle) -> Font {
+    let traits = fontDescriptor.object(forKey: .traits) as? [UIFontDescriptor.TraitKey: Any]
+    let baseFontSize = UIFontDescriptor.preferredFontDescriptor(withTextStyle: relativeTo).pointSize
+    let weightValue = traits?[.weight] as? CGFloat ?? UIFont.Weight.regular.rawValue
+    let weight = UIFont.Weight(rawValue: weightValue)
+    
+    return Font.custom(
+      fontName,
+      size: baseFontSize,
+      relativeTo: Font.TextStyle(uiTextStyle: relativeTo)
+    )
+    .weight(Font.Weight(uiFontWeight: weight))
   }
 }
                      </code>
@@ -202,7 +243,7 @@ dynamicTypeSize.isAccessibilitySize // true starting accessibility medium
                <section>
                   <h3>Font size</h3>
                   <p>Tool: Rocket Sim</p>
-<video width="640" height="360" controls>
+<video width="640" height="360" autoplay loop muted controls>
   <source src="./video/font-rocketsim.mp4" type="video/mp4">
   Your browser does not support video playing
 </video>
@@ -215,14 +256,71 @@ dynamicTypeSize.isAccessibilitySize // true starting accessibility medium
                   </p>
                   <img src="./img/colorcontrast-tool.png"/>
                </section>
-                <section data-menu-title="Copyright">
+               <section>
+                  <h3>Screen reader</h3>
+                  <p>
+                     We can use Accessibility Inspector tool from XCode<br/>
+                  </p>
+                  <img src="./img/a11yInspector.png"/>
+               </section>
+               <section>
+                  <h3>Screen reader</h3>
+                  <p>
+                     There are 3 main elements:
+                     <ul>
+                        <li>Accessibility label</li>
+                        <li>Decorative / acessibility element</li>
+                        <li>Traits</li>
+                     </ul>
+                  </p>
+               </section>
+               <section>
+                  <h3>Screen reader</h3>
+                  <p>
+                     Accessibility label: description that the screen reader will read if provided. <br/>
+                     If not set, the screen reader will read the default one if exists or the ones from subviews
+                  </p>
+               </section>
+               <section>
+                  <h3>Screen reader</h3>
+                  <p>
+                     Accessibility Element: <br/>
+                     You can remove some elements from the screen reader using AccessibilityElementHidden. <br/>
+                     Another way to do it for images is to use the decorative parameter.
+                  <pre>
+                     <code class="language-swift">
+      Image("my-image").accessibilityHidden(true)
+      Image(decorative: "my-image")                     
+                     </code>
+                  </pre>
+                  </p>
+               </section>
+               <section>
+                  <h3>Screen reader</h3>
+                  <p>
+                     Accessibility Trait: <br/>
+                     You may need to add traits on elemensts, for instance on clickable image to be considered as a button.
+                     These are the more common traits to use:
+                     <ul>
+                        <li>button</li>
+                        <li>header for titles or sections</li>
+                        <li>link (can be a real link text or a button that will open another app)</li>
+                     </ul>
+                  </p>
+                  <pre>
+                     <code class="language-swift">
+.accessibilityAddTraits(.isButton)                   
+                     </code>
+                  </pre>
+               </section>
+                <!-- section data-menu-title="Copyright">
                   <p>
                      <b>Github:</b> benjdum59<br/>
                      <b>Website:</b> benjdum59.github.io<br/>
                      <b>Mail:</b> benjamin.dumont.pro@gmail.com<br/><br/>
                      <a href="../index.html">Go to Homepage</a>
                   </p>
-               </section>
+               </section-->
             </div>
          </div>
          <script src="../tools/revealjs/dist/reveal.js"></script>
