@@ -130,7 +130,7 @@ public extension UIFont {
   static func preferredFont(for style: TextStyle) -> UIFont {
     let metrics = UIFontMetrics(forTextStyle: style)
     let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: style)
-    let font = UIFont(descriptor: fontDescriptor, size: pointSize)
+    let font = UIFont(descriptor: fontDescriptor, size: fontDescriptor.pointSize)
     return metrics.scaledFont(for: font)
   }
 }
