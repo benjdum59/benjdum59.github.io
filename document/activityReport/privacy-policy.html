@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A clear overview of what Activity Report accesses, where it is stored, and how it is used."><title>Privacy Policy · Activity Report</title><link rel="stylesheet" href="activity-report.css"></head>
+<body><header class="topbar"><div class="topbar-inner"><a class="brand" href="support.html">Activity Report</a><nav class="languages" aria-label="Page links"><a href="privacy-policy.html" aria-current="page">English</a><a href="privacy-policy.fr.html">Français</a></nav></div></header><section class="hero"><div class="hero-inner"><div class="eyebrow">PRIVACY · ACTIVITY REPORT</div><h1>Privacy Policy</h1><p>A clear overview of what Activity Report accesses, where it is stored, and how it is used.</p><span class="updated">Last updated October 28, 2026</span></div></section><main class="layout"><article class="content">
+<p>Activity Report is a macOS app that writes your daily stand-up from your GitHub activity, your meetings, your reminders and your own notes. It is built so that your data stays on your Mac.</p>
+<p><strong>In short: the developer collects no data. There is no account, no analytics, no advertising and no tracking. The app only talks to GitHub, with your own token, to read your activity.</strong></p>
+<h2>What the app reads, and where it goes</h2>
+<div class="table-wrap"><table><thead><tr><th>Data</th><th>Why</th><th>Where it goes</th></tr></thead><tbody>
+<tr><td>Your GitHub personal access token</td><td>To read your GitHub activity</td><td>Stored in your macOS keychain. Sent only to GitHub (<code>api.github.com</code>), over HTTPS.</td></tr>
+<tr><td>Your GitHub activity: events, pull requests, reviews, team memberships</td><td>To write the report and list your pull requests</td><td>Requested from GitHub with your token, shown in the app. Never sent anywhere else.</td></tr>
+<tr><td>Your calendar events of the reported day</td><td>To list your meetings</td><td>Read on your Mac through the macOS Calendar (EventKit). Never sent anywhere.</td></tr>
+<tr><td>Your reminders</td><td>To list what you completed and what is due</td><td>Read on your Mac through the macOS Reminders (EventKit). Never sent anywhere.</td></tr>
+<tr><td>Your notes (<em>Next</em>, <em>Blockers</em>) and the stand-up texts you copy</td><td>To keep them for a year, and to write recaps</td><td>Stored in the app's folder on your Mac, deleted after a year.</td></tr>
+<tr><td>Your pull requests over a period of up to a year</td><td>To write a recap, when you ask for one</td><td>Requested from GitHub with your token, then summarized on your Mac by Apple Intelligence (Apple's on-device model). Never sent anywhere else.</td></tr>
+<tr><td>Your settings (language, organizations, ticket links, formats)</td><td>To remember your choices</td><td>Stored in the app's preferences on your Mac.</td></tr>
+</tbody></table></div>
+<p>Calendar and reminders access is asked by macOS the first time; you can turn it off at any time in System Settings › Privacy &amp; Security.</p>
+<p>When you copy the stand-up text, it is put on the clipboard so that you can paste it, in Slack or Google Chat for example. What happens to it there is up to you and to those services.</p>
+<h2>What the developer receives</h2>
+<p>Nothing. The app contains no analytics, crash-reporting or advertising code, and it sends nothing to the developer. If you choose to share crash reports and analytics with app developers in macOS settings, Apple may share anonymous crash reports with the developer, under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>.</p>
+<h2>Third parties</h2>
+<ul><li><strong>GitHub</strong> receives the requests the app makes with your token, as with any GitHub client. See the <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.</li><li><strong>Apple</strong> distributes the app and handles any purchase made through the App Store. See the <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a>.</li></ul>
+<h2>Keeping and deleting your data</h2>
+<ul><li>Notes and copied stand-up texts are deleted automatically after a year; you can also delete a copy from the History screen.</li><li>Your token can be replaced in Settings › GitHub, or removed with the Keychain Access app (item "ActivityReport.GitHubToken").</li><li>Deleting the app and its folder (<code>~/Library/Containers/com.benjdum59.ActivityReport</code>) removes everything it stored. You can also revoke the token on GitHub at any time, in Settings › Developer settings › Personal access tokens.</li></ul>
+<h2>Children</h2>
+<p>The app is a work tool and is not directed at children.</p>
+<h2>Changes</h2>
+<p>If this policy changes, the new version will be published at this address, with its date.</p>
+<h2>Contact</h2>
+<p>Questions about this policy: benjamin.dumont.pro@gmail.com</p></article></main><footer class="footer">Activity Report · <a href="support.html">Support</a> · <a href="privacy-policy.html">Privacy</a></footer></body></html>
